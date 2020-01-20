@@ -1,0 +1,44 @@
+{
+  "goal0": {
+    "name": "General/Multiple",
+    "targetDate": "N/A",
+    "isMet": false,
+    "uid": "All"
+  },
+  "goal1": {
+    "name": "Read 50 Books in 2020",
+    "targetDate": "Dec 31, 2020",
+    "isMet": false,
+    "uid": "12345"
+  },
+  "goal2": {
+    "name": "Run a Half Marathon",
+    "targetDate": "Apr 20, 2020",
+    "isMet": false,
+    "uid": "01234"
+  },
+  "goal3": {
+    "name": "Complete My Front End Capstone",
+    "targetDate": "Feb 8, 2020",
+    "isMet": false,
+    "uid": "12345"
+  },
+  "goal4": {
+    "name": "Lose 15 lbs",
+    "targetDate": "Mar 1, 2020",
+    "isMet": false,
+    "uid": "54321"
+  },
+  "goal5": {
+    "name": "Learn to Speak Spanish for My Trip to Baja",
+    "targetDate": "Aug 4, 2020",
+    "isMet": false,
+    "uid": "67890"
+  },
+  "goal6": {
+    "name": "Toilet Train My Cats",
+    "targetDate": "Apr 1, 2020",
+    "isMet": false,
+    "uid": "09876"
+  }
+}

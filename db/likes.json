@@ -1,0 +1,22 @@
+{
+  "like1": {
+    "uid": "user id",
+    "feedId": "feed1"
+  },
+  "like2": {
+    "uid": "user id",
+    "feedId": "feed1"
+  },
+  "like3": {
+    "uid": "user id",
+    "feedId": "feed3"
+  },
+  "like4": {
+    "uid": "user id",
+    "feedId": "feed4"
+  },
+  "like5": {
+    "uid": "user id",
+    "feedId": "feed6"
+  }
+}
