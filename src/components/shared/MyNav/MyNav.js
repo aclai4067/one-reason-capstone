@@ -20,6 +20,7 @@ class MyNav extends React.Component {
 
   static propTypes = {
     authed: PropTypes.bool,
+    userFoubd: PropTypes.bool,
   }
 
   toggleNav = () => {
@@ -33,7 +34,7 @@ class MyNav extends React.Component {
 
   render() {
     const { isOpen } = this.state;
-    const { authed } = this.props;
+    const { authed, userFound } = this.props;
     const buildNavLinks = () => {
       if (authed) {
         return (
@@ -41,12 +42,18 @@ class MyNav extends React.Component {
             <NavItem>
               <Link className='nav-link' to='/'>Home</Link>
             </NavItem>
-            <NavItem>
-              <Link className='nav-link' to='/feed'>Feed</Link>
-            </NavItem>
-            <NavItem>
-              <Link className='nav-link' to='/goals'>Goals</Link>
-            </NavItem>
+            {
+              (userFound) && (
+                <Nav>
+                  <NavItem>
+                    <Link className='nav-link' to='/feed'>Feed</Link>
+                  </NavItem>
+                  <NavItem>
+                    <Link className='nav-link' to='/goals'>Goals</Link>
+                  </NavItem>
+                </Nav>
+              )
+            }
             <NavItem>
               <button className='logout btn btn-outline-secondary ml-1 my-2 my-sm-0' onClick={this.logoutEvent}>Log Out</button>
             </NavItem>

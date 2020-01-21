@@ -1,6 +1,7 @@
 import './Home.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import userData from '../../../helpers/data/userData';
 import authData from '../../../helpers/data/authData';
 
@@ -9,12 +10,17 @@ class Home extends React.Component {
     user: {},
   }
 
+  static propTypes = {
+    setUser: PropTypes.func,
+  }
+
   componentDidMount() {
     const uid = authData.getUid();
     userData.getUserByUid(uid)
       .then((existingUser) => {
         if (existingUser) {
           this.setState({ user: existingUser });
+          this.props.setUser(true);
         }
       }).catch((err) => console.error('error getting user by uid from Home', err));
   }
