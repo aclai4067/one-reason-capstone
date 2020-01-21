@@ -6,9 +6,9 @@ import {
   Collapse,
   Nav,
   NavItem,
-  NavLink,
   NavbarToggler,
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import PropTypes from 'prop-types';
@@ -39,13 +39,13 @@ class MyNav extends React.Component {
         return (
           <Nav className='navbar-nav ml-auto'>
             <NavItem>
-              <NavLink href='/home'>Home</NavLink>
+              <Link className='nav-link' to='/'>Home</Link>
             </NavItem>
             <NavItem>
-              <NavLink href='/feed'>Feed</NavLink>
+              <Link className='nav-link' to='/feed'>Feed</Link>
             </NavItem>
             <NavItem>
-              <NavLink href='/goals'>Goals</NavLink>
+              <Link className='nav-link' to='/goals'>Goals</Link>
             </NavItem>
             <NavItem>
               <button className='logout btn btn-outline-warning ml-1 my-2 my-sm-0' onClick={this.logoutEvent}>Log Out</button>
@@ -61,7 +61,7 @@ class MyNav extends React.Component {
     return (
       <div className='MyNav'>
         <Navbar className='navbar navbar-expand-lg navbar-light bg-light'>
-          <NavbarBrand className='navBrand' href='#'>One Reason</NavbarBrand>
+          <NavbarBrand className='navBrand' href='/'>One Reason</NavbarBrand>
           { (authed) && (<NavbarToggler onClick={this.toggleNav} />) }
           <Collapse isOpen={isOpen} navbar>
               { buildNavLinks() }
