@@ -1,5 +1,20 @@
-.Auth{
-  .googleIcon{
+@import '../../../styles/variables';
+
+.Auth {
+  .googleIcon {
     max-width: 30px;
+  }
+
+  h1 {
+    color: $teal;
+  }
+
+  p {
+    color: $darkGreige;
+    font-size: 1.25em;
+  }
+
+  .brand {
+    font-family: 'Bad Script', 'Kalam', sans-serif;
   }
 }

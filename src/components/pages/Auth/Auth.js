@@ -14,6 +14,9 @@ class Auth extends React.Component {
   render() {
     return (
       <div className='Auth'>
+        <h1 className='m-4'>Welcome to <span className='brand'>One Reason</span>!</h1>
+        <p><span className='brand'>One Reason</span> is an application designed to help you acheive your goals through practicing mindfulness.</p>
+        <p>The concept is simple.  Just commit to taking the time every day to log one reason why you want to work toward your goal.</p>
         <button className='btn btn-light mt-4' onClick={this.loginEvent}><img src={googleLogo} className='googleIcon m-2' alt='google icon' />Sign in With Google</button>
       </div>
     );
