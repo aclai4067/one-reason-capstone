@@ -48,7 +48,7 @@ class MyNav extends React.Component {
               <Link className='nav-link' to='/goals'>Goals</Link>
             </NavItem>
             <NavItem>
-              <button className='logout btn btn-outline-warning ml-1 my-2 my-sm-0' onClick={this.logoutEvent}>Log Out</button>
+              <button className='logout btn btn-outline-secondary ml-1 my-2 my-sm-0' onClick={this.logoutEvent}>Log Out</button>
             </NavItem>
           </Nav>
         );

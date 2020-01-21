@@ -1,11 +1,11 @@
 @import './variables';
 @import '~bootstrap/dist/css/bootstrap.min.css';
-
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
 body {
   background-color: $backgroundCream;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
