@@ -9,7 +9,7 @@ class Goals extends React.Component {
       <div className='Goals'>
         <h1>Goals</h1>
         <Link className='btn btn-outline-dark' to='goals/new'>New Goal</Link>
-        <Link class='btn btn-outline-info' to={`/goals/${goalId}/edit`}>Edit Goal</Link>
+        <Link className='btn btn-outline-info' to={`/goals/${goalId}/edit`}>Edit Goal</Link>
       </div>
     );
   }

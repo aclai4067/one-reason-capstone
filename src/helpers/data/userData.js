@@ -18,4 +18,6 @@ const getUserByUid = (uid) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export default { getUserByUid };
+const createUser = (userObj) => axios.post(`${baseUrl}/users.json`, userObj);
+
+export default { getUserByUid, createUser };
