@@ -31,6 +31,7 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => {
 class App extends React.Component {
   state = {
     authed: false,
+    userFound: false,
   }
 
   componentDidMount() {
@@ -38,7 +39,7 @@ class App extends React.Component {
       if (user) {
         this.setState({ authed: true });
       } else {
-        this.setState({ authed: false });
+        this.setState({ authed: false, userFound: false });
       }
     });
   }
@@ -47,15 +48,19 @@ class App extends React.Component {
     this.removeListener();
   }
 
+  setUser = (status) => {
+    this.setState({ userFound: status });
+  }
+
   render() {
-    const { authed } = this.state;
+    const { authed, userFound } = this.state;
     return (
       <div className="App">
         <Router>
-          <MyNav authed={authed} />
+          <MyNav authed={authed} userFound={userFound} />
           <Switch>
             <PublicRoute path='/auth' exact component={Auth} authed={authed} />
-            <PrivateRoute path='/' exact component={Home} authed={authed} />
+            <PrivateRoute path='/' exact component={Home} authed={authed} setUser={this.setUser} />
             <PrivateRoute path='/feed' exact component={Feed} authed={authed} />
             <PrivateRoute path='/goals' exact component={Goals} authed={authed} />
             <PrivateRoute path='/goals/new' exact component={GoalForm} authed={authed} />

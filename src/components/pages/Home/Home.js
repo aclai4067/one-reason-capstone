@@ -1,18 +1,53 @@
 import './Home.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import userData from '../../../helpers/data/userData';
+import authData from '../../../helpers/data/authData';
 
 class Home extends React.Component {
+  state = {
+    user: {},
+  }
+
+  static propTypes = {
+    setUser: PropTypes.func,
+  }
+
+  componentDidMount() {
+    const uid = authData.getUid();
+    userData.getUserByUid(uid)
+      .then((existingUser) => {
+        if (existingUser) {
+          this.setState({ user: existingUser });
+          this.props.setUser(true);
+        }
+      }).catch((err) => console.error('error getting user by uid from Home', err));
+  }
+
   render() {
-    const profileId = 12345;
-    const feedId = 67890;
+    const buildHome = () => {
+      const { user } = this.state;
+      if (!user.id) {
+        return (
+          <div className='newUserHome'>
+            <h1 className='m-4'>Welcome to <span className='brand'>One Reason</span>!</h1>
+            <p>We are so excited to help you get started with your goals!</p>
+            <p>First things first. Please, tell us a little about yourself.</p>
+            <Link to='/profile' className='btn profileBtn mt-4'>Create Your Profile</Link>
+          </div>
+        );
+      }
+      return (
+        <div className='currentUserHome'>
+          <h1> Welcome, {user.name}!</h1>
+        </div>
+      );
+    };
 
     return (
       <div className='Home'>
-        <h1>Home</h1>
-        <Link className='btn btn-outline-dark' to='/profile'>Create Your Profile</Link>
-        <Link className='btn btn-outline-info' to={`/profile/${profileId}/edit`}>Edit Profile</Link>
-        <Link className='btn btn-outline-info' to={`/home/${feedId}/edit`}>Edit Post</Link>
+        { buildHome() }
       </div>
     );
   }
