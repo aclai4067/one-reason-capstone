@@ -2,12 +2,19 @@
 @import url('https://fonts.googleapis.com/css?family=Bad+Script|Kalam&display=swap');
 
 
-.Home{
-  h1{
+.Home {
+  margin: 0 .5em;
+
+  h1 {
+    color: $teal;
+    text-align: left;
+  }
+
+  h2 {
     color: $teal;
   }
 
-  p{
+  p {
     color: $darkGreige;
     font-size: 1.5em;
   }
@@ -23,9 +30,26 @@
     color: $teal;
     font-size: 2em;
 
-    &:hover{
+    &:hover {
       color: $sedona;
       border: 2px solid $sedona;
+    }
+  }
+
+  .profileDisplay {
+    
+    p {
+      font-size: 1em;
+      margin: .5em;
+      text-align: right;
+    }
+
+    .profilePic {
+      border: 1px solid $teal;
+      border-radius: 999px;
+      margin: .5em;
+      max-height: 100px;
+      max-width: 100px;
     }
   }
 }

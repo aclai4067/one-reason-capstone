@@ -1,22 +1,22 @@
 {
   "like1": {
-    "uid": "user id",
+    "uid": "NNAEEEL9HbOeMY5Mli2XHo4EUEC2",
     "feedId": "feed1"
   },
   "like2": {
-    "uid": "user id",
+    "uid": "dBweJTkUd7UyJ9lsQNaTAykIOHm1",
     "feedId": "feed1"
   },
   "like3": {
-    "uid": "user id",
+    "uid": "NNAEEEL9HbOeMY5Mli2XHo4EUEC2",
     "feedId": "feed3"
   },
   "like4": {
-    "uid": "user id",
+    "uid": "dBweJTkUd7UyJ9lsQNaTAykIOHm1",
     "feedId": "feed4"
   },
   "like5": {
-    "uid": "user id",
+    "uid": "NNAEEEL9HbOeMY5Mli2XHo4EUEC2",
     "feedId": "feed6"
   }
 }
