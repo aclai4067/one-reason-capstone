@@ -18,6 +18,8 @@ const getGoalsByUid = (uid) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
+const getGoalById = (goalId) => axios.get(`${baseUrl}/goals/${goalId}.json`);
+
 const createGoal = (goalObj) => axios.post(`${baseUrl}/goals.json`, goalObj);
 
-export default { createGoal, getGoalsByUid };
+export default { createGoal, getGoalsByUid, getGoalById };

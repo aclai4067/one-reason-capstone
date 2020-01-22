@@ -6,6 +6,7 @@ import userData from '../../../helpers/data/userData';
 import authData from '../../../helpers/data/authData';
 import goalData from '../../../helpers/data/goalData';
 import feedData from '../../../helpers/data/feedData';
+import Post from '../../shared/Post/Post';
 
 class Home extends React.Component {
   state = {
@@ -49,7 +50,8 @@ class Home extends React.Component {
 
   render() {
     const buildHome = () => {
-      const { user, goalsMet } = this.state;
+      const { user, goalsMet, selectedUserFeed } = this.state;
+      const buildFeed = selectedUserFeed.map((post) => <Post key={post.id} post={post} />);
       if (!user.id) {
         return (
           <div className='newUserHome'>
@@ -71,6 +73,9 @@ class Home extends React.Component {
           </div>
           <h1> Welcome Back, {user.name}!</h1>
           <h2>History</h2>
+          <div className='historyLog'>
+            { buildFeed }
+          </div>
         </div>
       );
     };
