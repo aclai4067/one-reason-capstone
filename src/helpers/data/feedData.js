@@ -18,4 +18,19 @@ const getFeedByUid = (uid) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export default { getFeedByUid };
+const getAllPosts = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/feeds.json`)
+    .then((response) => {
+      const allFeed = response.data;
+      const allFeedArr = [];
+      if (allFeed !== null) {
+        Object.keys(allFeed).forEach((fbId) => {
+          allFeed[fbId].id = fbId;
+          allFeedArr.push(allFeed[fbId]);
+        });
+      }
+      resolve(allFeedArr);
+    }).catch((err) => reject(err));
+});
+
+export default { getFeedByUid, getAllPosts };
