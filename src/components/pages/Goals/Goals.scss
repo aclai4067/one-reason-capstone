@@ -1,7 +1,10 @@
 @import '../../../styles/variables';
 
 .Goals{
+  margin: 0 .5em;
+
   h1{
     color: $teal;
+    padding: 1em;
   }
 }

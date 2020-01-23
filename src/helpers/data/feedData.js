@@ -33,4 +33,19 @@ const getAllPosts = () => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export default { getFeedByUid, getAllPosts };
+const getPostsByGoalId = (goalId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/feeds.json?orderBy="goalId"&equalTo="${goalId}"`)
+    .then((response) => {
+      const goalFeed = response.data;
+      const goalFeedArr = [];
+      if (goalFeed !== null) {
+        Object.keys(goalFeed).forEach((fbId) => {
+          goalFeed[fbId].id = fbId;
+          goalFeedArr.push(goalFeed[fbId]);
+        });
+      }
+      resolve(goalFeedArr);
+    }).catch((err) => reject(err));
+});
+
+export default { getFeedByUid, getAllPosts, getPostsByGoalId };
