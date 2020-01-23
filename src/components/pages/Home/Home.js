@@ -2,6 +2,7 @@ import './Home.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import userData from '../../../helpers/data/userData';
 import authData from '../../../helpers/data/authData';
 import goalData from '../../../helpers/data/goalData';
@@ -31,7 +32,8 @@ class Home extends React.Component {
   setUserFeed = (uid) => {
     feedData.getFeedByUid(uid)
       .then((results) => {
-        this.setState({ userFeed: results, selectedUserFeed: results });
+        const sortFeed = results.sort((a, b) => moment(b.date) - moment(a.date));
+        this.setState({ userFeed: sortFeed, selectedUserFeed: sortFeed });
       }).catch((err) => console.error('error from getUserFeed', err));
   }
 

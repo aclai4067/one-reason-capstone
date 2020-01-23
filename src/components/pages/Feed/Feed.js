@@ -1,5 +1,6 @@
 import './Feed.scss';
 import React from 'react';
+import moment from 'moment';
 import feedData from '../../../helpers/data/feedData';
 import Post from '../../shared/Post/Post';
 
@@ -12,7 +13,8 @@ class Feed extends React.Component {
   setFeed = () => {
     feedData.getAllPosts()
       .then((entireFeed) => {
-        this.setState({ feed: entireFeed, selectedFeed: entireFeed });
+        const sortEntireFeed = entireFeed.sort((a, b) => moment(b.date) - moment(a.date));
+        this.setState({ feed: sortEntireFeed, selectedFeed: sortEntireFeed });
       }).catch((err) => console.error('error from setFeed', err));
   }
 

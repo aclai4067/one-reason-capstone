@@ -1,7 +1,7 @@
 {
   "feed1": {
     "post": "To increase my vocabulary",
-    "date": "Jan 23, 2020",
+    "date": "2020-01-23",
     "likes": 2,
     "isAnonymous": false,
     "goalId": "goal1",
@@ -9,7 +9,7 @@
   },
   "feed2": {
     "post": "I will work toward my goals for the sense of accomplishment that comes from productivity",
-    "date": "Jan 23, 2020",
+    "date": "2020-01-23",
     "likes": 0,
     "isAnonymous": true,
     "goalId": "goal0",
@@ -17,7 +17,7 @@
   },
   "feed3": {
     "post": "I want to keep up with my kids",
-    "date": "Jan 22, 2020",
+    "date": "2020-01-22",
     "likes": 1,
     "isAnonymous": false,
     "goalId": "goal4",
@@ -25,7 +25,7 @@
   },
   "feed4": {
     "post": "To pratice the skills I have learned in a cohesive project",
-    "date": "Jan 22, 2020",
+    "date": "2020-01-22",
     "likes": 1,
     "isAnonymous": false,
     "goalId": "goal3",
@@ -33,7 +33,7 @@
   },
   "feed5": {
     "post": "Reading helps me relax and take my mind off stress",
-    "date": "Jan 21, 2020",
+    "date": "2020-01-21",
     "likes": 0,
     "isAnonymous": false,
     "goalId": "goal1",
@@ -41,7 +41,7 @@
   },
   "feed6": {
     "post": "I want to fit into my clothes more comfortably without buying up a size",
-    "date": "Jan 21, 2020",
+    "date": "2020-01-21",
     "likes": 1,
     "isAnonymous": false,
     "goalId": "goal4",
@@ -49,7 +49,7 @@
   },
   "feed7": {
     "post": "I want to take stress off my joints and feet",
-    "date": "Jan 20, 2020",
+    "date": "2020-01-20",
     "likes": 0,
     "isAnonymous": false,
     "goalId": "goal4",
@@ -57,7 +57,7 @@
   },
   "feed8": {
     "post": "To learn about a variety of topics",
-    "date": "Jan 20, 2020",
+    "date": "2020-01-20",
     "likes": 0,
     "isAnonymous": false,
     "goalId": "goal1",
@@ -65,7 +65,7 @@
   },
   "feed9": {
     "post": "Because running clears my head",
-    "date": "Jan 20, 2020",
+    "date": "2020-01-20",
     "likes": 0,
     "isAnonymous": false,
     "goalId": "goal2",
@@ -73,10 +73,18 @@
   },
   "feed10": {
     "post": "Because litter in the carpet is gross!",
-    "date": "Jan 20, 2020",
+    "date": "2020-01-20",
     "likes": 0,
     "isAnonymous": false,
     "goalId": "goal6",
     "uid": "09876"
+  },
+  "feed11": {
+    "post": "I Met My Goal:",
+    "date": "2020-01-20",
+    "likes": 20,
+    "isAnonymous": false,
+    "goalId": "goal5",
+    "uid": "67890"
   }
 }
