@@ -1,0 +1,31 @@
+@import '../../../styles/variables';
+
+.Post{
+  text-align: left;
+  color: $darkGreige;
+  box-shadow: 0 3px 10px 0 $greige;
+
+
+  p {
+    font-size: 1.25em;
+
+    &.postContent {
+      margin-left: 2em;
+    }
+
+    &.relatedGoal {
+      color: $greige;
+      margin-bottom: .5em;
+    }
+  
+    &.likesCount {
+      color: $teal;
+      margin-bottom: .5em;
+    }
+  }
+
+  .postHeader {
+    color: $sedona;
+    margin-bottom: .75em;
+  } 
+}
