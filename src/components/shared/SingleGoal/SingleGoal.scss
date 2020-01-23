@@ -1,0 +1,26 @@
+@import '../../../styles/variables';
+
+.SingleGoal {
+  text-align: left;
+  color: $darkGreige;
+  box-shadow: 0 3px 10px 0 $greige;
+
+  .goalUnchecked, .goalMet {
+    color: $teal;
+    font-size: 1.25em;
+  }
+
+  .goalCheckBox {
+    height: 20px;
+    width: 20px;
+  }
+
+  .goalHeader {
+    color: $sedona;
+  }
+
+  p {
+    font-size: 1.25em;
+    margin-bottom: .5em;
+  }
+}
