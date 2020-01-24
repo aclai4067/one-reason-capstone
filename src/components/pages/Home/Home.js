@@ -50,10 +50,18 @@ class Home extends React.Component {
       }).catch((err) => console.error('error getting user by uid from Home', err));
   }
 
+  deletePost = (feedId) => {
+    const uid = authData.getUid();
+    feedData.removePost(feedId)
+      .then(() => {
+        this.setUserFeed(uid);
+      }).catch((err) => console.error('error from deletePost', err));
+  }
+
   render() {
     const buildHome = () => {
       const { user, goalsMet, selectedUserFeed } = this.state;
-      const buildFeed = selectedUserFeed.map((post) => <Post key={post.id} post={post} />);
+      const buildFeed = selectedUserFeed.map((post) => <Post key={post.id} post={post} homeView={true} deletePost={this.deletePost} />);
       if (!user.id) {
         return (
           <div className='newUserHome'>
