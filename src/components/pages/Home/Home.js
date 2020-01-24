@@ -84,7 +84,7 @@ class Home extends React.Component {
           <h1> Welcome Back, {user.name}!</h1>
           <h2>History</h2>
           <div className='historyLog'>
-            { buildFeed }
+            { (selectedUserFeed[0]) ? buildFeed : <h4 className='noPosts mt-3'>You haven't made any posts yet</h4> }
           </div>
         </div>
       );

@@ -32,7 +32,7 @@ class SingleGoal extends React.Component {
           <h4 className='goalHeader'>{goal.name}</h4>
           {
             (goal.isMet) ? (<p className='goalMet'>Met!</p>)
-              : (<form><input id='goalCheck' className='goalCheckBox' type='checkbox' /><label className='goalUnchecked pl-2' for='goalCheck'>Goal Met</label></form>)
+              : (<form><input id='goalCheck' className='goalCheckBox' type='checkbox' /><label className='goalUnchecked pl-2' htmlFor='goalCheck'>Goal Met</label></form>)
           }
         </header>
         <p>Target Date: {moment(goal.targetDate).format('ll')}</p>
