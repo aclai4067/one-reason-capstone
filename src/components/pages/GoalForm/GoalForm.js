@@ -48,7 +48,7 @@ class GoalForm extends React.Component {
             <label htmlFor='targetDateInput'>Goal Target Date</label>
             <input type='date' className='form-control' id='targetDateInput' value={this.state.goalTargetDate} onChange={this.changeGoalDate} />
           </div>
-          <button className='btn btn-secondary saveGoal' onClick={this.saveGoalEvent}>Save</button>
+          <button className='btn saveGoal' onClick={this.saveGoalEvent}>Save</button>
         </form>
       </div>
     );
