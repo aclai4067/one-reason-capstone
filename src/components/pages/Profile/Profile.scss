@@ -3,9 +3,25 @@
 .Profile{
   h1{
     color: $teal;
+    padding: 1em;
   }
 
   label{
     color: $sedona;
+    font-size: 1.25em;
+  }
+
+  .saveProfile {
+    background-color: $lightGreige;
+    border: 1px solid $sedona;
+    color: $sedona;
+    font-size: 1.25em;
+    width: 5em;
+
+    &:hover{
+      background-color: $sedona;
+      border: 1px solid $lightGreige;
+      color: $lightGreige;
+    }
   }
 }

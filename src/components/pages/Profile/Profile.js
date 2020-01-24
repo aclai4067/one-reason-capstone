@@ -80,7 +80,7 @@ class Profile extends React.Component {
               <input type='date' className='form-control' id='targetDateInput' value={this.state.firstGoalDate} onChange={this.changeGoalDate} />
             </div>
           </div>
-          <button className='btn btn-secondary' onClick={this.saveProfileEvent}>Save</button>
+          <button className='btn saveProfile' onClick={this.saveProfileEvent}>Save</button>
         </form>
       </div>
     );
