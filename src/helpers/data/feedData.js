@@ -50,9 +50,12 @@ const getPostsByGoalId = (goalId) => new Promise((resolve, reject) => {
 
 const removePost = (feedId) => axios.delete(`${baseUrl}/feeds/${feedId}.json`);
 
+const changePost = (feedId, feedObj) => axios.put(`${baseUrl}/feeds/${feedId}.json`, feedObj);
+
 export default {
   getFeedByUid,
   getAllPosts,
   getPostsByGoalId,
   removePost,
+  changePost,
 };

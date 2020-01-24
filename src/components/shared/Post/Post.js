@@ -49,7 +49,7 @@ class Post extends React.Component {
             <header className='d-flex justify-content-between'>
               <h4 className='postHeader'>{ displayName } posted on {date}</h4>
               {
-                (homeView) && (<button className='btn btn-danger close'>X</button>)
+                (homeView) && (<button className='deletePostBtn btn btn-danger close' onClick={this.deletePostEvent}>X</button>)
               }
             </header>
             <p className='postContentGoalMet'>{post.post} {goalName}!</p>
