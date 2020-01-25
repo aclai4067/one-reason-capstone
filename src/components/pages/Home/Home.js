@@ -97,7 +97,7 @@ class Home extends React.Component {
         <div className='currentUserHome'>
           <div className='profileDisplay d-flex justify-content-end'>
             <div className='pt-4'>
-              <p>Member Since {user.memberSince}</p>
+              <p>Member Since {moment(user.memberSince).format('ll')}</p>
               <p>{goalsMet} Goals Met</p>
             </div>
             <img className='profilePic' src={user.imageUrl} alt={user.name} />

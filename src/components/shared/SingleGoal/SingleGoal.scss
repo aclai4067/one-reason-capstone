@@ -26,5 +26,25 @@
 
   .deleteGoalBtn{
     height: 1em;
+    margin-left: 1em;
+
+    &:hover{
+      background-color: $sedona;
+      color: $lightGreige;
+    }
+  }
+
+  .editGoalBtn{
+    height: 1.2em;
+    margin-left: 1em;
+
+    &:hover{
+      background-color: $teal;
+      color: $lightGreige;
+    }
+
+    svg {
+      height: .8em;
+    }
   }
 }
