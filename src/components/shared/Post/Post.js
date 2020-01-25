@@ -2,6 +2,7 @@ import './Post.scss';
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import postShape from '../../../helpers/propz/postShape';
@@ -53,8 +54,8 @@ class Post extends React.Component {
               {
                 (homeView) && (
                   <div className='d-flex'>
-                    <button className='editPostBtn btn btn-danger close'><FontAwesomeIcon icon={faPencilAlt} /></button>
-                    <button className='deletePostBtn btn btn-danger close' onClick={this.deletePostEvent}>X</button>
+                    <Link className='editPostBtn btn close' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
+                    <button className='deletePostBtn btn close' onClick={this.deletePostEvent}>X</button>
                   </div>
                 )
               }
@@ -73,8 +74,8 @@ class Post extends React.Component {
             {
               (homeView) && (
                 <div className='d-flex'>
-                  <button className='editPostBtn btn btn-info close'><FontAwesomeIcon icon={faPencilAlt} /></button>
-                  <button className='deletePostBtn btn btn-danger close' onClick={this.deletePostEvent}>X</button>
+                  <Link className='editPostBtn btn close p-0' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
+                  <button className='deletePostBtn btn close' onClick={this.deletePostEvent}>X</button>
                 </div>
               )
             }
