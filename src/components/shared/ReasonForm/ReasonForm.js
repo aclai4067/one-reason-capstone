@@ -17,6 +17,7 @@ class ReasonForm extends React.Component {
     goals: PropTypes.arrayOf(goalShape.goalShape),
     savePost: PropTypes.func,
     editPost: PropTypes.func,
+    feedId: PropTypes.string,
   }
 
   componentDidUpdate(prevProps) {

@@ -21,16 +21,29 @@ class Post extends React.Component {
     deletePost: PropTypes.func,
   }
 
-  componentDidMount() {
+  setUserAndGoalNames = () => {
     const { post } = this.props;
+    console.log(post);
     userData.getUserByUid(post.uid)
       .then((user) => {
         this.setState({ userName: user.name });
         goalData.getGoalById(post.goalId)
           .then((goal) => {
             this.setState({ goalName: goal.data.name });
+            console.log('setstate');
           });
       }).catch((err) => console.error('error from Post componentDidMount', err));
+  }
+
+  componentDidMount() {
+    this.setUserAndGoalNames();
+  }
+
+  componentWillUpdate(prevProps) {
+    if ((prevProps.post.goalId !== this.props.post.goalId)) {
+      console.log('update');
+      this.setUserAndGoalNames();
+    }
   }
 
   deletePostEvent = (e) => {
@@ -54,7 +67,7 @@ class Post extends React.Component {
               {
                 (homeView) && (
                   <div className='d-flex'>
-                    <Link className='editPostBtn btn close' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
+                    <Link className='editPostBtn btn close p-0' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
                     <button className='deletePostBtn btn close' onClick={this.deletePostEvent}>X</button>
                   </div>
                 )

@@ -73,15 +73,18 @@ class Home extends React.Component {
       .then(() => {
         this.setUserFeed(uid);
         this.props.history.push('/');
+        console.log(this.props.computedMatch.path);
       }).catch((err) => console.error('error from editPost', err));
   }
 
   render() {
     const { goals, userFeed } = this.state;
     const { feedId } = this.props.match.params;
+    const { path } = this.props.computedMatch;
+    console.log('fid', path);
     const buildHome = () => {
       const { user, goalsMet, selectedUserFeed } = this.state;
-      const buildFeed = selectedUserFeed.map((post) => <Post key={post.id} post={post} homeView={true} deletePost={this.deletePost} />);
+      const buildFeed = selectedUserFeed.map((post) => <Post key={post.id} post={post} homeView={true} deletePost={this.deletePost} path={path} />);
       if (!user.id) {
         return (
           <div className='newUserHome'>
