@@ -15,6 +15,10 @@ class Home extends React.Component {
     goalsMet: 0,
     userFeed: [],
     selectedUserFeed: [],
+    goals: [],
+    postMessage: '',
+    postGoalId: '',
+    postIsAnonymous: false,
   }
 
   static propTypes = {
@@ -25,7 +29,7 @@ class Home extends React.Component {
     goalData.getGoalsByUid(uid)
       .then((results) => {
         const metGoals = results.filter((x) => x.isMet === true);
-        this.setState({ goalsMet: metGoals.length });
+        this.setState({ goalsMet: metGoals.length, goals: results });
       }).catch((err) => console.error('error from getGoalCount', err));
   }
 
@@ -58,7 +62,28 @@ class Home extends React.Component {
       }).catch((err) => console.error('error from deletePost', err));
   }
 
+  changePost = (e) => {
+    e.preventDefault();
+    this.setState({ postMessage: e.target.value });
+  }
+
+  changeGoalRelation = (e) => {
+    e.preventDefault();
+    this.setState({ postGoalId: e.target.value });
+  }
+
+  changeAnon= (e) => {
+    this.setState({ postIsAnonymous: e.target.checked });
+  }
+
   render() {
+    const {
+      goals,
+      postMessage,
+      postGoalId,
+      postIsAnonymous,
+    } = this.state;
+    const buildGoalDropDown = goals.map((goal) => <option key={goal.id} value={goal.id}>{goal.name}</option>);
     const buildHome = () => {
       const { user, goalsMet, selectedUserFeed } = this.state;
       const buildFeed = selectedUserFeed.map((post) => <Post key={post.id} post={post} homeView={true} deletePost={this.deletePost} />);
@@ -82,7 +107,27 @@ class Home extends React.Component {
             <img className='profilePic' src={user.imageUrl} alt={user.name} />
           </div>
           <h1> Welcome Back, {user.name}!</h1>
-          <h2>History</h2>
+          <h2 className='reasonPrompt'>What is one reason you want to work toward your goal today?</h2>
+          <form>
+            <div className='d-flex'>
+             <input type='text' className='reasonTextbox col-9' placeholder='I want to reach this goal because...' onChange={this.changePost} value={postMessage} />
+             <button className='btn postReasonBtn col-sm-2 ml-sm-4' onClick={this.savePostEvent}>Post</button>
+            </div>
+            <div className='d-flex col-sm-8 offset-1 mt-1 justify-content-between flex-wrap'>
+              <div className='form-group d-flex'>
+                <input id='annoymousCheck' className='annoymousCheckbox' type='checkbox' onChange={this.changeAnon} checked={postIsAnonymous} />
+                <label className='annoymousCheckLabel pl-2' htmlFor='annoymousCheck'>Anonymous</label>
+              </div>
+              <div className='form-group d-flex'>
+                <label htmlFor='goalSelection' className='goalDropdownLabel'>Related Goal</label>
+                <select className='form-control' id='goalSelection' onChange={this.changeGoalRelation} value={postGoalId}>
+                  <option value='goal0'>General/Multiple</option>
+                  {buildGoalDropDown}
+                </select>
+              </div>
+            </div>
+          </form>
+          <h2 className='historyHeader'>History</h2>
           <div className='historyLog'>
             { (selectedUserFeed[0]) ? buildFeed : <h4 className='noPosts mt-3'>You haven't made any posts yet</h4> }
           </div>
