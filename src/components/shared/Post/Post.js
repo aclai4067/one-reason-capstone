@@ -2,6 +2,8 @@ import './Post.scss';
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import postShape from '../../../helpers/propz/postShape';
 import userData from '../../../helpers/data/userData';
 import goalData from '../../../helpers/data/goalData';
@@ -49,7 +51,12 @@ class Post extends React.Component {
             <header className='d-flex justify-content-between'>
               <h4 className='postHeader'>{ displayName } posted on {date}</h4>
               {
-                (homeView) && (<button className='deletePostBtn btn btn-danger close' onClick={this.deletePostEvent}>X</button>)
+                (homeView) && (
+                  <div className='d-flex'>
+                    <button className='editPostBtn btn btn-danger close'><FontAwesomeIcon icon={faPencilAlt} /></button>
+                    <button className='deletePostBtn btn btn-danger close' onClick={this.deletePostEvent}>X</button>
+                  </div>
+                )
               }
             </header>
             <p className='postContentGoalMet'>{post.post} {goalName}!</p>
@@ -64,7 +71,12 @@ class Post extends React.Component {
           <header className='d-flex justify-content-between'>
             <h4 className='postHeader'>{ displayName } posted on {date}</h4>
             {
-              (homeView) && (<button className='deletePostBtn btn btn-danger close' onClick={this.deletePostEvent}>X</button>)
+              (homeView) && (
+                <div className='d-flex'>
+                  <button className='editPostBtn btn btn-info close'><FontAwesomeIcon icon={faPencilAlt} /></button>
+                  <button className='deletePostBtn btn btn-danger close' onClick={this.deletePostEvent}>X</button>
+                </div>
+              )
             }
           </header>
           <p className='postContent'>{post.post}</p>

@@ -36,7 +36,12 @@
     margin-bottom: .75em;
   } 
 
-  .deletePostBtn{
+  .deletePostBtn, .editPostBtn{
     height: 1em;
+    margin-left: 1em;
+
+    &:hover{
+      color: $lightGreige;
+    }
   }
 }
