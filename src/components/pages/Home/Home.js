@@ -1,6 +1,8 @@
 import './Home.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import userData from '../../../helpers/data/userData';
@@ -100,7 +102,10 @@ class Home extends React.Component {
               <p>Member Since {moment(user.memberSince).format('ll')}</p>
               <p>{goalsMet} Goals Met</p>
             </div>
-            <img className='profilePic' src={user.imageUrl} alt={user.name} />
+            <div className='profileImgAndEdit'>
+              <img className='profilePic' src={user.imageUrl} alt={user.name} />
+              <Link className='editProfileBtn btn p-0' to={`/profile/${user.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
+            </div>
           </div>
           <h1> Welcome Back, {user.name}!</h1>
           <h2 className='reasonPrompt'>What is one reason you want to work toward your goal today?</h2>

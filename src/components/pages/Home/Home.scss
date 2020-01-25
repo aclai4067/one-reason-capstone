@@ -57,8 +57,36 @@
       border: 1px solid $teal;
       border-radius: 999px;
       margin: .5em;
-      max-height: 100px;
-      max-width: 100px;
+      height: 100px;
+      width: 100px;
+    }
+
+    .profileImgAndEdit{
+      position: relative;
+
+      .editProfileBtn {
+        background-color: $lightGreige;
+        border: 1px solid $teal;
+        border-radius: 999px;
+        color: $teal; 
+        position: absolute;
+        top: 5em;
+        right: 5em;
+        height: 1.7em;
+        width: 1.7em;
+        margin-left: 1em;
+  
+        &:hover{
+          background-color: $teal;
+          border-color: $lightGreige;
+          color: $lightGreige;
+        }
+  
+        svg {
+          height: 1.5em;
+          vertical-align: 0;
+        }
+      }
     }
   }
 }

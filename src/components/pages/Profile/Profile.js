@@ -10,6 +10,18 @@ class Profile extends React.Component {
     profileImage: '',
     firstGoalName: '',
     firstGoalDate: '',
+    profile: {},
+  }
+
+  componentDidMount() {
+    const { profileId } = this.props.match.params;
+    if (profileId) {
+      userData.getUserById(profileId)
+        .then((results) => {
+          const user = results.data;
+          this.setState({ profile: user, profileName: user.name, profileImage: user.imageUrl });
+        }).catch((err) => console.error('error in profile componentDidMount', err));
+    }
   }
 
   saveProfileEvent = (e) => {
@@ -36,6 +48,18 @@ class Profile extends React.Component {
       }).catch((err) => console.error('error from saveProfileEvent', err));
   }
 
+  updateProfileEvent = (e) => {
+    e.preventDefault();
+    const { profileId } = this.props.match.params;
+    const updatedProfile = this.state.profile;
+    updatedProfile.name = this.state.profileName;
+    updatedProfile.imageUrl = this.state.profileImage;
+    userData.editProfile(profileId, updatedProfile)
+      .then(() => {
+        this.props.history.push('/');
+      }).catch((err) => console.error('error from updateProfleEvent', err));
+  }
+
   changeName = (e) => {
     e.preventDefault();
     this.setState({ profileName: e.target.value });
@@ -57,6 +81,8 @@ class Profile extends React.Component {
   }
 
   render() {
+    const { profileId } = this.props.match.params;
+
     return (
       <div className='Profile'>
         <h1>Profile</h1>
@@ -69,17 +95,21 @@ class Profile extends React.Component {
             <label htmlFor='imageInput'>Profile Picture</label>
             <input type='text' className='form-control' id='imageInput' value={this.state.profileImage} onChange={this.changeImg} placeholder='Enter an image url (ending in .jpg, .png, .gif, etc.)' />
           </div>
-          <div className='firstGoal'>
-            <div className='form-group'>
-              <label htmlFor='goalInput'>First Goal</label>
-              <input type='text' className='form-control' id='goalInput' value={this.state.firstGoalName} onChange={this.changeGoalName} placeholder='Enter the goal you would like to meet' />
+          { (!profileId) ? (
+            <div className='firstGoal'>
+              <div className='form-group'>
+                <label htmlFor='goalInput'>First Goal</label>
+                <input type='text' className='form-control' id='goalInput' value={this.state.firstGoalName} onChange={this.changeGoalName} placeholder='Enter the goal you would like to meet' />
+              </div>
+              <div className='form-group'>
+                <label htmlFor='targetDateInput'>Goal Target Date</label>
+                <input type='date' className='form-control' id='targetDateInput' value={this.state.firstGoalDate} onChange={this.changeGoalDate} />
+              </div>
+              <button className='btn saveProfile' onClick={this.saveProfileEvent}>Save</button>
             </div>
-            <div className='form-group'>
-              <label htmlFor='targetDateInput'>Goal Target Date</label>
-              <input type='date' className='form-control' id='targetDateInput' value={this.state.firstGoalDate} onChange={this.changeGoalDate} />
-            </div>
-          </div>
-          <button className='btn saveProfile' onClick={this.saveProfileEvent}>Save</button>
+          )
+            : (<button className='btn updateProfile' onClick={this.updateProfileEvent}>Update</button>)
+          }
         </form>
       </div>
     );

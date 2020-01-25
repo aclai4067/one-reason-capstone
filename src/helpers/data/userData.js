@@ -18,6 +18,15 @@ const getUserByUid = (uid) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
+const getUserById = (userId) => axios.get(`${baseUrl}/users/${userId}.json`);
+
 const createUser = (userObj) => axios.post(`${baseUrl}/users.json`, userObj);
 
-export default { getUserByUid, createUser };
+const editProfile = (userId, userObj) => axios.put(`${baseUrl}/users/${userId}.json`, userObj);
+
+export default {
+  getUserByUid,
+  createUser,
+  getUserById,
+  editProfile,
+};
