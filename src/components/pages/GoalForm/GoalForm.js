@@ -10,6 +10,17 @@ class GoalForm extends React.Component {
     goalIsMet: false,
   }
 
+  componentDidMount() {
+    const { goalId } = this.props.match.params;
+    if (goalId) {
+      goalData.getGoalById(goalId)
+        .then((goal) => {
+          const selectedGoal = goal.data;
+          this.setState({ goalName: selectedGoal.name, goalTargetDate: selectedGoal.targetDate, goalIsMet: selectedGoal.isMet });
+        }).catch((err) => console.error('error from goalForm componentDidMount', err));
+    }
+  }
+
   saveGoalEvent = (e) => {
     e.preventDefault(e);
     const uid = authData.getUid();
@@ -25,6 +36,22 @@ class GoalForm extends React.Component {
       }).catch((err) => console.error('error in saveGoalEvent', err));
   }
 
+  editGoalEvent = (e) => {
+    e.preventDefault(e);
+    const { goalId } = this.props.match.params;
+    const uid = authData.getUid();
+    const updatedGoal = {
+      name: this.state.goalName,
+      targetDate: this.state.goalTargetDate,
+      isMet: this.state.goalIsMet,
+      uid,
+    };
+    goalData.changeGoal(goalId, updatedGoal)
+      .then(() => {
+        this.props.history.push('/goals');
+      }).catch((err) => console.error('error from editGoalEvent', err));
+  }
+
   changeGoalName = (e) => {
     e.preventDefault();
     this.setState({ goalName: e.target.value });
@@ -35,20 +62,40 @@ class GoalForm extends React.Component {
     this.setState({ goalTargetDate: e.target.value });
   }
 
+  changeGoalIsMet = (e) => {
+    this.setState({ goalIsMet: e.target.checked });
+  }
+
   render() {
+    const { goalName, goalTargetDate, goalIsMet } = this.state;
+    const { goalId } = this.props.match.params;
+    const buildEditGoalMet = () => {
+      return (
+        <div>
+          <div>
+            <input id='goalCheck' className='goalCheckBox' type='checkbox' onChange={this.changeGoalIsMet} checked={goalIsMet} />
+            <label className='goalUnchecked pl-2' htmlFor='goalCheck'>Goal Met</label>
+          </div>
+          <button className='btn updateGoal' onClick={this.editGoalEvent}>Update</button>
+        </div>
+      );
+    }
+
     return (
       <div className='GoalForm'>
         <h1>Set Your Goals</h1>
         <form className='col-6 offset-3'>
           <div className='form-group'>
             <label htmlFor='goalInput'>Goal</label>
-            <input type='text' className='form-control' id='goalInput' value={this.state.goalName} onChange={this.changeGoalName} placeholder='Enter the goal you would like to meet' />
+            <input type='text' className='form-control' id='goalInput' value={goalName} onChange={this.changeGoalName} placeholder='Enter the goal you would like to meet' />
           </div>
           <div className='form-group'>
             <label htmlFor='targetDateInput'>Goal Target Date</label>
-            <input type='date' className='form-control' id='targetDateInput' value={this.state.goalTargetDate} onChange={this.changeGoalDate} />
+            <input type='date' className='form-control' id='targetDateInput' value={goalTargetDate} onChange={this.changeGoalDate} />
           </div>
-          <button className='btn saveGoal' onClick={this.saveGoalEvent}>Save</button>
+          {
+            (goalId) ? buildEditGoalMet() : <button className='btn saveGoal' onClick={this.saveGoalEvent}>Save</button>
+          }
         </form>
       </div>
     );

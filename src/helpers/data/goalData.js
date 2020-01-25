@@ -24,9 +24,12 @@ const createGoal = (goalObj) => axios.post(`${baseUrl}/goals.json`, goalObj);
 
 const removeGoal = (goalId) => axios.delete(`${baseUrl}/goals/${goalId}.json`);
 
+const changeGoal = (goalId, goalObj) => axios.put(`${baseUrl}/goals/${goalId}.json`, goalObj);
+
 export default {
   createGoal,
   getGoalsByUid,
   getGoalById,
   removeGoal,
+  changeGoal,
 };

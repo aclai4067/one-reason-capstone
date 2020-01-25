@@ -2,31 +2,31 @@
   "user1": {
     "name": "Ashley Claiborne",
     "imageUrl": "https://avatars0.githubusercontent.com/u/47763728?s=460&v=4",
-    "memberSince": "Jan 15, 2020",
+    "memberSince": "2020-01-15",
     "uid": "NNAEEEL9HbOeMY5Mli2XHo4EUEC2"
   },
   "user2": {
     "name": "Priya Kumari",
     "imageUrl": "https://live.staticflickr.com/6041/6255997679_3e2883b978_b.jpg",
-    "memberSince": "Jan 19, 2020",
+    "memberSince": "2020-01-19",
     "uid": "dBweJTkUd7UyJ9lsQNaTAykIOHm1"
   },
   "user3": {
     "name": "Mandy Burage",
     "imageUrl": "https://live.staticflickr.com/3178/2935494534_c49888b609_b.jpg",
-    "memberSince": "Jan 19, 2020",
+    "memberSince": "2020-01-19",
     "uid": "67890"
   },
   "user4": {
     "name": "Emily Haas",
     "imageUrl": "https://live.staticflickr.com/4419/37158461775_15eaaa4ed3_b.jpg",
-    "memberSince": "Jan 20, 2020",
+    "memberSince": "2020-01-20",
     "uid": "09876"
   },
   "user5": {
     "name": "Rachel Mevis",
     "imageUrl": "https://farm3.staticflickr.com/2908/13587363134_1ca23df62c_b.jpg",
-    "memberSince": "Jan 20, 2020",
+    "memberSince": "2020-01-20",
     "uid": "01234"
   }
 }
