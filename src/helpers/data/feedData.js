@@ -52,10 +52,13 @@ const removePost = (feedId) => axios.delete(`${baseUrl}/feeds/${feedId}.json`);
 
 const changePost = (feedId, feedObj) => axios.put(`${baseUrl}/feeds/${feedId}.json`, feedObj);
 
+const createPost = (feedObj) => axios.post(`${baseUrl}/feeds.json`, feedObj);
+
 export default {
   getFeedByUid,
   getAllPosts,
   getPostsByGoalId,
   removePost,
   changePost,
+  createPost,
 };
