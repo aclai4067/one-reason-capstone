@@ -16,6 +16,7 @@ class ReasonForm extends React.Component {
   static propTypes = {
     goals: PropTypes.arrayOf(goalShape.goalShape),
     savePost: PropTypes.func,
+    editPost: PropTypes.func,
   }
 
   componentDidUpdate(prevProps) {
@@ -44,6 +45,28 @@ class ReasonForm extends React.Component {
       uid,
     };
     this.props.savePost(uid, newReason);
+    this.setState({
+      postMessage: '',
+      postIsAnonymous: false,
+      postGoalId: '',
+      postDate: '',
+      postLikes: 0,
+    });
+  }
+
+  updatePostEvent = (e) => {
+    e.preventDefault();
+    const uid = authData.getUid();
+    const { feedId, editPost } = this.props;
+    const updatedReason = {
+      post: this.state.postMessage,
+      date: this.state.postDate,
+      likes: this.state.postLikes,
+      isAnonymous: this.state.postIsAnonymous,
+      goalId: this.state.postGoalId,
+      uid,
+    };
+    editPost(feedId, updatedReason);
     this.setState({ postMessage: '', postIsAnonymous: false, postGoalId: '' });
   }
 

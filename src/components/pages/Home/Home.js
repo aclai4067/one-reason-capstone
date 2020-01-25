@@ -67,6 +67,15 @@ class Home extends React.Component {
       }).catch((err) => console.error('error from deletePost', err));
   }
 
+  editPost = (feedId, postObj) => {
+    const uid = authData.getUid();
+    feedData.changePost(feedId, postObj)
+      .then(() => {
+        this.setUserFeed(uid);
+        this.props.history.push('/');
+      }).catch((err) => console.error('error from editPost', err));
+  }
+
   render() {
     const { goals, userFeed } = this.state;
     const { feedId } = this.props.match.params;
@@ -94,7 +103,7 @@ class Home extends React.Component {
           </div>
           <h1> Welcome Back, {user.name}!</h1>
           <h2 className='reasonPrompt'>What is one reason you want to work toward your goal today?</h2>
-          <ReasonForm goals={goals} userFeed={userFeed} savePost={this.savePost} feedId={feedId} />
+          <ReasonForm goals={goals} userFeed={userFeed} savePost={this.savePost} editPost={this.editPost} feedId={feedId} />
           <h2 className='historyHeader'>History</h2>
           <div className='historyLog'>
             { (selectedUserFeed[0]) ? buildFeed : <h4 className='noPosts mt-3'>You haven't made any posts yet</h4> }
