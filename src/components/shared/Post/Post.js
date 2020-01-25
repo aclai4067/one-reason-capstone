@@ -2,6 +2,9 @@ import './Post.scss';
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import postShape from '../../../helpers/propz/postShape';
 import userData from '../../../helpers/data/userData';
 import goalData from '../../../helpers/data/goalData';
@@ -18,7 +21,7 @@ class Post extends React.Component {
     deletePost: PropTypes.func,
   }
 
-  componentDidMount() {
+  setUserAndGoalNames = () => {
     const { post } = this.props;
     userData.getUserByUid(post.uid)
       .then((user) => {
@@ -28,6 +31,16 @@ class Post extends React.Component {
             this.setState({ goalName: goal.data.name });
           });
       }).catch((err) => console.error('error from Post componentDidMount', err));
+  }
+
+  componentDidMount() {
+    this.setUserAndGoalNames();
+  }
+
+  componentDidUpdate(prevProps) {
+    if ((prevProps.post.goalId !== this.props.post.goalId)) {
+      this.setUserAndGoalNames();
+    }
   }
 
   deletePostEvent = (e) => {
@@ -49,7 +62,12 @@ class Post extends React.Component {
             <header className='d-flex justify-content-between'>
               <h4 className='postHeader'>{ displayName } posted on {date}</h4>
               {
-                (homeView) && (<button className='deletePostBtn btn btn-danger close' onClick={this.deletePostEvent}>X</button>)
+                (homeView) && (
+                  <div className='d-flex'>
+                    <Link className='editPostBtn btn close p-0' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
+                    <button className='deletePostBtn btn close' onClick={this.deletePostEvent}>X</button>
+                  </div>
+                )
               }
             </header>
             <p className='postContentGoalMet'>{post.post} {goalName}!</p>
@@ -64,7 +82,12 @@ class Post extends React.Component {
           <header className='d-flex justify-content-between'>
             <h4 className='postHeader'>{ displayName } posted on {date}</h4>
             {
-              (homeView) && (<button className='deletePostBtn btn btn-danger close' onClick={this.deletePostEvent}>X</button>)
+              (homeView) && (
+                <div className='d-flex'>
+                  <Link className='editPostBtn btn close p-0' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
+                  <button className='deletePostBtn btn close' onClick={this.deletePostEvent}>X</button>
+                </div>
+              )
             }
           </header>
           <p className='postContent'>{post.post}</p>
