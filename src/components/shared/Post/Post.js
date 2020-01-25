@@ -23,14 +23,12 @@ class Post extends React.Component {
 
   setUserAndGoalNames = () => {
     const { post } = this.props;
-    console.log(post);
     userData.getUserByUid(post.uid)
       .then((user) => {
         this.setState({ userName: user.name });
         goalData.getGoalById(post.goalId)
           .then((goal) => {
             this.setState({ goalName: goal.data.name });
-            console.log('setstate');
           });
       }).catch((err) => console.error('error from Post componentDidMount', err));
   }
@@ -39,9 +37,8 @@ class Post extends React.Component {
     this.setUserAndGoalNames();
   }
 
-  componentWillUpdate(prevProps) {
+  componentDidUpdate(prevProps) {
     if ((prevProps.post.goalId !== this.props.post.goalId)) {
-      console.log('update');
       this.setUserAndGoalNames();
     }
   }
