@@ -54,6 +54,24 @@ class Home extends React.Component {
       }).catch((err) => console.error('error getting user by uid from Home', err));
   }
 
+  savePostEvent = (e) => {
+    e.preventDefault();
+    const uid = authData.getUid();
+    const newReason = {
+      post: this.state.postMessage,
+      date: new Date(),
+      likes: 0,
+      isAnonymous: this.state.postIsAnonymous,
+      goalId: this.state.postGoalId,
+      uid,
+    };
+    feedData.createPost(newReason)
+      .then(() => {
+        this.setUserFeed(uid);
+        this.setState({ postMessage: '', postIsAnonymous: false, postGoalId: '' });
+      }).catch((err) => console.error('error from savePostEvent', err));
+  }
+
   deletePost = (feedId) => {
     const uid = authData.getUid();
     feedData.removePost(feedId)

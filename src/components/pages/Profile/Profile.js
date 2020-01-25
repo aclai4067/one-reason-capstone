@@ -1,6 +1,5 @@
 import './Profile.scss';
 import React from 'react';
-import moment from 'moment';
 import authData from '../../../helpers/data/authData';
 import userData from '../../../helpers/data/userData';
 import goalData from '../../../helpers/data/goalData';
@@ -25,7 +24,7 @@ class Profile extends React.Component {
     const newUserObj = {
       name: this.state.profileName,
       imageUrl: this.state.profileImage,
-      memberSince: moment().format('YYYY-MM-DD'),
+      memberSince: new Date(),
       uid,
     };
     userData.createUser(newUserObj)
