@@ -100,8 +100,8 @@ class ReasonForm extends React.Component {
         </div>
         <div className='d-flex col-sm-8 offset-1 mt-1 justify-content-between flex-wrap'>
           <div className='form-group d-flex'>
-            <input id='annoymousCheck' className='annoymousCheckbox' type='checkbox' onChange={this.changeAnon} checked={postIsAnonymous} />
-            <label className='annoymousCheckLabel pl-2' htmlFor='annoymousCheck'>Anonymous</label>
+            <input id='anonymousCheck' className='anonymousCheckbox' type='checkbox' onChange={this.changeAnon} checked={postIsAnonymous} />
+            <label className='anonymousCheckLabel pl-2' htmlFor='anonymousCheck'>Anonymous</label>
           </div>
           <div className='form-group d-flex'>
             <label htmlFor='goalSelection' className='goalDropdownLabel'>Related Goal</label>
