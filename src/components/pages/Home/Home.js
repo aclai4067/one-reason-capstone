@@ -78,10 +78,23 @@ class Home extends React.Component {
       }).catch((err) => console.error('error from editPost', err));
   }
 
+  togglePostDisplayEvent = (e) => {
+    e.preventDefault();
+    const { userFeed } = this.state;
+    if (e.target.value !== 'all') {
+      const filterResults = userFeed.filter((x) => x.goalId === e.target.value);
+      this.setState({ selectedUserFeed: filterResults });
+    }
+    if (e.target.value === 'all') {
+      this.setState({ selectedUserFeed: userFeed });
+    }
+  }
+
   render() {
     const { goals, userFeed } = this.state;
     const { feedId } = this.props.match.params;
     const { path } = this.props.computedMatch;
+    const buildGoalFilter = goals.map((goal) => <option key={goal.id} value={goal.id}>{goal.name}</option>);
     const buildHome = () => {
       const { user, goalsMet, selectedUserFeed } = this.state;
       const buildFeed = selectedUserFeed.map((post) => <Post key={post.id} post={post} homeView={true} deletePost={this.deletePost} path={path} />);
@@ -110,8 +123,13 @@ class Home extends React.Component {
           <h1> Welcome Back, {user.name}!</h1>
           <h2 className='reasonPrompt'>What is one reason you want to work toward your goal today?</h2>
           <ReasonForm goals={goals} userFeed={userFeed} savePost={this.savePost} editPost={this.editPost} feedId={feedId} />
-          <h2 className='historyHeader'>History</h2>
           <div className='historyLog'>
+            <h2 className='historyHeader'>History</h2>
+            <select className='logFilter' id='logFilterByGoal' onChange={this.togglePostDisplayEvent}>
+              <option value='all' disabled selected>Filter by Goal...</option>
+              <option value='all'>See All Posts</option>
+              {buildGoalFilter}
+            </select>
             { (selectedUserFeed[0]) ? buildFeed : <h4 className='noPosts mt-3'>You haven't made any posts yet</h4> }
           </div>
         </div>
