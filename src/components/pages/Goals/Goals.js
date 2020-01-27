@@ -87,7 +87,7 @@ class Goals extends React.Component {
   }
 
   render() {
-    const { goals,modalIsOpen, goalShareIsAnonymous } = this.state;
+    const { goals, modalIsOpen, goalShareIsAnonymous } = this.state;
     const buildGoals = goals.map((goal) => <SingleGoal key={goal.id} goal={goal} deleteGoal={this.deleteGoal} metGoal={this.metGoal} />);
 
     return (
