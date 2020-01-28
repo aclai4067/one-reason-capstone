@@ -59,4 +59,12 @@
       height: .8em;
     }
   }
+
+  .liked-true {
+    color: $teal;
+  }
+
+  .liked-false {
+    color: $greige;
+  }
 }

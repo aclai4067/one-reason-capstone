@@ -93,7 +93,7 @@ class Post extends React.Component {
 
   render() {
     const { post, homeView } = this.props;
-    const { userName, goalName } = this.state;
+    const { userName, goalName, liked } = this.state;
     const date = moment(post.date).format('ll');
     const displayName = (post.isAnonymous) ? 'Anonymous' : userName;
 
@@ -109,7 +109,7 @@ class Post extends React.Component {
                     <Link className='editPostBtn btn close p-0' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
                     <button className='deletePostBtn btn close' onClick={this.deletePostEvent}>X</button>
                   </div>
-                ) : (<FontAwesomeIcon icon={faGlassCheers} />)
+                ) : (<FontAwesomeIcon onClick={this.likePostEvent} className={`liked-${liked}`} icon={faGlassCheers} />)
               }
             </header>
             <p className='postContentGoalMet'>{post.post} {goalName}!</p>
@@ -129,7 +129,7 @@ class Post extends React.Component {
                   <Link className='editPostBtn btn close p-0' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
                   <button className='deletePostBtn btn close' onClick={this.deletePostEvent}>X</button>
                 </div>
-              ) : (<FontAwesomeIcon icon={faHeart} />)
+              ) : (<FontAwesomeIcon onClick={this.likePostEvent} className={`liked-${liked}`} icon={faHeart} />)
             }
           </header>
           <p className='postContent'>{post.post}</p>
