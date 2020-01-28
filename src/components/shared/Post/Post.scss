@@ -59,4 +59,21 @@
       height: .8em;
     }
   }
+
+  .likeBtn {
+    min-height: 1.5em!important;
+    min-width: 1.5em!important;
+
+    &.liked-true {
+      color: $teal;
+    }
+  
+    &.liked-false {
+      color: $greige;
+    }
+
+    &.cheers {
+      width: 2em!important;
+    }
+  }
 }

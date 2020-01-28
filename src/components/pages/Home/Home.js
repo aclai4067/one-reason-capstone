@@ -81,11 +81,11 @@ class Home extends React.Component {
   togglePostDisplayEvent = (e) => {
     e.preventDefault();
     const { userFeed } = this.state;
-    if (e.target.value !== 'all') {
+    if (e.target.value !== ('all' || 'unfiltered')) {
       const filterResults = userFeed.filter((x) => x.goalId === e.target.value);
       this.setState({ selectedUserFeed: filterResults });
     }
-    if (e.target.value === 'all') {
+    if (e.target.value === ('all' || 'unfiltered')) {
       this.setState({ selectedUserFeed: userFeed });
     }
   }
@@ -125,8 +125,8 @@ class Home extends React.Component {
           <ReasonForm goals={goals} userFeed={userFeed} savePost={this.savePost} editPost={this.editPost} feedId={feedId} />
           <div className='historyLog'>
             <h2 className='historyHeader'>History</h2>
-            <select className='logFilter' id='logFilterByGoal' onChange={this.togglePostDisplayEvent}>
-              <option value='all' disabled selected>Filter by Goal...</option>
+            <select className='logFilter' id='logFilterByGoal' onChange={this.togglePostDisplayEvent} defaultValue={'unfiltered'}>
+              <option value='unfiltered' disabled>Filter by Goal...</option>
               <option value='all'>See All Posts</option>
               {buildGoalFilter}
             </select>
