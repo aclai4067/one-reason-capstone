@@ -70,23 +70,24 @@ class Post extends React.Component {
     const postUpdate = post;
     if (!liked) {
       postUpdate.likes += 1;
-      likePost(post.id, postUpdate);
       const newLike = {
         uid,
         feedId: post.id,
       };
       likesData.saveLike(newLike)
-        .then((likeId) => {
+        .then((results) => {
+          const likeId = results.data.name;
           this.setState({ likeId, liked: true });
+          likePost(post.id, postUpdate);
         }).catch((err) => console.error('error from likePostEvent-liked', err));
     }
     if (liked) {
       postUpdate.likes -= 1;
-      likePost(post.id, postUpdate);
       const { likeId } = this.state;
       likesData.deleteLike(likeId)
         .then(() => {
           this.setState({ likeId: '', liked: false });
+          likePost(post.id, postUpdate);
         }).catch((err) => console.error('error from likePostEvent-unliked', err));
     }
   }
