@@ -2,9 +2,18 @@
 
 .Feed{
   margin: 0 .5em;
+  position: relative;
 
   h1{
     color: $teal;
     padding: 1em;
+  }
+
+  .feedFilter {
+    color: $darkGreige;
+    height: 2em;
+    position: absolute;
+    top: 50px;
+    right: 30px;
   }
 }
