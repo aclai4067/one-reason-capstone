@@ -3,6 +3,7 @@ import React from 'react';
 import moment from 'moment';
 import journalData from '../../../helpers/data/journalData';
 import authData from '../../../helpers/data/authData';
+import JournalEntry from '../../shared/JournalEntry/JournalEntry';
 
 class Journal extends React.Component {
   state = {
@@ -23,9 +24,12 @@ class Journal extends React.Component {
   }
 
   render() {
+    const { journal } = this.state;
+    const buildJournal = journal.map((entry) => <JournalEntry key={entry.id} entry={entry} />);
     return (
       <div className='Journal'>
         <h1>Journal</h1>
+        {buildJournal}
       </div>
     );
   }

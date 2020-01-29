@@ -2,9 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:600&display=swap');
 
 .Post{
-  text-align: left;
-  color: $darkGreige;
-  box-shadow: 0 3px 10px 0 $greige;
+  @include displayCard(left);
 
 
   p {
