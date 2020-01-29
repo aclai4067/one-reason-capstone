@@ -16,6 +16,7 @@ class Journal extends React.Component {
     allJournalEntries: [],
     selectedJournalEntries: [],
     modalIsOpen: false,
+    journalEntryToDelete: '',
   }
 
   setJournal = () => {
