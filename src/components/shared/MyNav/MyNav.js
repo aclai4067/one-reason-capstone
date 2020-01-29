@@ -51,6 +51,9 @@ class MyNav extends React.Component {
                   <NavItem>
                     <Link className='nav-link' to='/goals'>Goals</Link>
                   </NavItem>
+                  <NavItem>
+                    <Link className='nav-link' to='/journal'>Journal</Link>
+                  </NavItem>
                 </Nav>
               )
             }

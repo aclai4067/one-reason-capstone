@@ -17,17 +17,6 @@
   }
 
   .saveGoal, .updateGoal {
-    background-color: $lightGreige;
-    border: 1px solid $sedona;
-    color: $sedona;
-    font-size: 1.25em;
-    margin-top: 1em;
-    width: 5em;
-
-    &:hover{
-      background-color: $sedona;
-      border: 1px solid $lightGreige;
-      color: $lightGreige;
-    }
+    @include formButton(5em);
   }
 }

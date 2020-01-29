@@ -1,0 +1,37 @@
+@import '../../../styles/variables';
+
+.JournalEntry {
+  @include displayCard(justify);
+  padding: .5em;
+
+  header {
+    margin-top: .75em;
+
+    .journalTitle{
+      color: $sedona;
+    }
+
+    .journalDate {
+      color: $sedona;
+      text-align: right;
+    }
+  }
+  
+  .editJournalBtn, .deleteJournalBtn {
+    margin-right: 10px;
+
+    svg {
+      height: .8em;
+      width: .8em;
+    }
+  }
+
+  .journalBody {
+    padding: 0 1em;
+  }
+
+  .journalGoal {
+    text-align: left;
+    color: $lightGreige;
+  }
+}

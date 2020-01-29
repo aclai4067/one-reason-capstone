@@ -1,9 +1,7 @@
 @import '../../../styles/variables';
 
 .SingleGoal {
-  text-align: left;
-  color: $darkGreige;
-  box-shadow: 0 3px 10px 0 $greige;
+  @include displayCard(left);
 
   .goalUnchecked, .goalMet {
     color: $teal;

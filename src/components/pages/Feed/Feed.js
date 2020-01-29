@@ -33,7 +33,7 @@ class Feed extends React.Component {
   toggleLikedPostDisplayEvent = (e) => {
     e.preventDefault();
     this.setState({ filterValue: e.target.value });
-    const { likesArr, feed, filterValue } = this.state;
+    const { likesArr, feed } = this.state;
     if (e.target.value === 'liked') {
       const userLikes = [];
       likesArr.forEach((like) => {

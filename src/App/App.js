@@ -16,6 +16,7 @@ import Feed from '../components/pages/Feed/Feed';
 import Goals from '../components/pages/Goals/Goals';
 import GoalForm from '../components/pages/GoalForm/GoalForm';
 import Profile from '../components/pages/Profile/Profile';
+import Journal from '../components/pages/Journal/Journal';
 
 authData.firebaseApp();
 
@@ -68,6 +69,7 @@ class App extends React.Component {
             <PrivateRoute path='/home/:feedId/edit' exact component={Home} authed={authed} />
             <PrivateRoute path='/profile' exact component={Profile} authed={authed} />
             <PrivateRoute path='/profile/:profileId/edit' exact component={Profile} authed={authed} />
+            <PrivateRoute path='/journal' exact component={Journal} authed={authed} />
           </Switch>
         </Router>
       </div>

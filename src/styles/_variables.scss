@@ -6,3 +6,23 @@ $greige: rgb(180, 172, 170);
 $darkGreige: rgb(90, 84, 83);
 $sedona: rgb(158, 79, 50);
 $translucentSedona: rgba(158, 79, 50, 0.247);
+
+@mixin formButton($width) {
+  background-color: $lightGreige;
+    border: 1px solid $sedona;
+    color: $sedona;
+    font-size: 1.25em;
+    width: $width;
+
+    &:hover{
+      background-color: $sedona;
+      border: 1px solid $lightGreige;
+      color: $lightGreige;
+    }
+}
+
+@mixin displayCard($alignment) {
+  text-align: $alignment;
+  color: $darkGreige;
+  box-shadow: 0 3px 10px 0 $greige;
+}
