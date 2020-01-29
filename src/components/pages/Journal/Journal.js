@@ -7,7 +7,8 @@ import JournalEntry from '../../shared/JournalEntry/JournalEntry';
 
 class Journal extends React.Component {
   state = {
-    journal: [],
+    allJournalEntries: [],
+    selectedJournalEntries: [],
   }
 
   setJournal = () => {
@@ -15,7 +16,7 @@ class Journal extends React.Component {
     journalData.getJournalByUid(uid)
       .then((results) => {
         const sortJournal = results.sort((a, b) => moment(b.date) - moment(a.date));
-        this.setState({ journal: sortJournal });
+        this.setState({ allJournalEntries: sortJournal, selectedJournalEntries: sortJournal });
       }).catch((err) => console.error('error from setJournal', err));
   }
 
@@ -23,13 +24,20 @@ class Journal extends React.Component {
     this.setJournal();
   }
 
+  deleteEntry = (journalId) => {
+    journalData.removeJournalEntry(journalId)
+      .then(() => {
+        this.setJournal();
+      }).catch((err) => console.error('error from deleteEntry', err));
+  }
+
   render() {
-    const { journal } = this.state;
-    const buildJournal = journal.map((entry) => <JournalEntry key={entry.id} entry={entry} />);
+    const { selectedJournalEntries } = this.state;
+    const buildJournal = selectedJournalEntries.map((entry) => <JournalEntry key={entry.id} entry={entry} deleteEntry={this.deleteEntry} />);
     return (
       <div className='Journal'>
         <h1>Journal</h1>
-        {buildJournal}
+        { (selectedJournalEntries[0]) ? buildJournal : <h4 className='noEntries mt-3'>You haven't written in your journal yet</h4>}
       </div>
     );
   }
