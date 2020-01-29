@@ -15,7 +15,7 @@ class JournalEntry extends React.Component {
 
   static propTypes = {
     entry: journalShape.journalShape,
-    deleteEntry: PropTypes.func,
+    confirmDelete: PropTypes.func,
   }
 
   componentDidMount() {
@@ -27,10 +27,10 @@ class JournalEntry extends React.Component {
       }).catch((err) => console.error('error from journalEntry componentDidMount', err));
   }
 
-  deleteEntryEvent = (e) => {
+  confirmDeleteEvent = (e) => {
     e.preventDefault();
-    const { entry, deleteEntry } = this.props;
-    deleteEntry(entry.id);
+    const { entry, confirmDelete } = this.props;
+    confirmDelete(entry.id);
   }
 
   render() {
@@ -45,7 +45,7 @@ class JournalEntry extends React.Component {
         </header>
         <div className='d-flex justify-content-end'>
             <Link className='editJournalBtn btn close' to={`/journal/${entry.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
-            <button className='deleteJournalBtn btn close' onClick={this.deleteEntryEvent}><FontAwesomeIcon icon={faTrashAlt} /></button>
+            <button className='deleteJournalBtn btn close' onClick={this.confirmDeleteEvent}><FontAwesomeIcon icon={faTrashAlt} /></button>
         </div>
         <p className='journalBody'>{entry.body}</p>
         <footer>
