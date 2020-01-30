@@ -44,7 +44,7 @@ class MyNav extends React.Component {
             </NavItem>
             {
               (userFound) && (
-                <Nav>
+                <Nav className='navbar-nav'>
                   <NavItem>
                     <Link className='nav-link' to='/feed'>Feed</Link>
                   </NavItem>
