@@ -13,3 +13,28 @@
     margin: 0 0 1em 1em;
   }
 }
+
+.goalModal {
+  .modal-content{
+    background-color: $backgroundCream;
+
+    h3 {
+      color: $teal;
+    }
+
+    .anonCheckbox {
+      height: 20px;
+      width: 20px;
+    }
+  
+    .btn {    
+      &.shareGoalMet {
+        @include altButton(4em);
+      }
+    
+      &.dismissGoalModal {
+        @include formButton(7em);
+      }
+    }
+  }
+}

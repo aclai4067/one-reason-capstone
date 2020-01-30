@@ -33,16 +33,7 @@
   }
 
   .profileBtn {
-    background-color: $greige;
-    border: 2px solid $teal;
-    border-radius: 10px;
-    color: $teal;
-    font-size: 2em;
-
-    &:hover {
-      color: $sedona;
-      border: 2px solid $sedona;
-    }
+    @include altButton(10em);
   }
 
   .profileDisplay {

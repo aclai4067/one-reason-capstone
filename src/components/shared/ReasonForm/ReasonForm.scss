@@ -3,6 +3,10 @@
 .ReasonForm {
   margin-left: 1em;
 
+  input, select {
+    @include formInput;
+  }
+
   label {
     color: $darkGreige;
     font-size: 1.25em;

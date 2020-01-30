@@ -1,5 +1,6 @@
 $backgroundCream: rgb(248, 239, 227);
 $teal: rgb(20, 120, 128);
+$translucentTeal: rgba(20, 121, 128, 0.404);
 $sageGrey: rgb(156, 168, 168);
 $lightGreige: rgb(194, 185, 183);
 $greige: rgb(180, 172, 170);
@@ -21,8 +22,32 @@ $translucentSedona: rgba(158, 79, 50, 0.247);
     }
 }
 
+@mixin altButton($width) {
+  background-color: $lightGreige;
+    border: 1px solid $teal;
+    color: $teal;
+    font-size: 1.25em;
+    width: $width;
+
+    &:hover{
+      background-color: $teal;
+      border: 1px solid $lightGreige;
+      color: $lightGreige;
+    }
+}
+
 @mixin displayCard($alignment) {
   text-align: $alignment;
   color: $darkGreige;
   box-shadow: 0 3px 10px 0 $greige;
+}
+
+@mixin formInput {
+    border: 1px solid $translucentSedona;
+
+    &:focus {
+      border-color: $teal;
+      box-shadow: 0 0 0 0.2rem $translucentTeal;
+      outline: none;
+    }
 }
