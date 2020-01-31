@@ -40,7 +40,6 @@ const getPostsByGoalId = (goalId) => new Promise((resolve, reject) => {
       const goalFeedArr = [];
       if (goalFeed !== null) {
         Object.keys(goalFeed).forEach((fbId) => {
-          goalFeed[fbId].id = fbId;
           goalFeedArr.push(goalFeed[fbId]);
         });
       }

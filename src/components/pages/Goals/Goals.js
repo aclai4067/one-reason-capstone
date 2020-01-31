@@ -14,6 +14,7 @@ import authData from '../../../helpers/data/authData';
 import SingleGoal from '../../shared/SingleGoal/SingleGoal';
 import feedData from '../../../helpers/data/feedData';
 import DeleteModal from '../../shared/DeleteModal/DeleteModal';
+import journalData from '../../../helpers/data/journalData';
 
 class Goals extends React.Component {
   state = {
@@ -56,6 +57,17 @@ class Goals extends React.Component {
       }).catch((err) => console.error('error from updateGoalIdOnPosts', err));
   }
 
+  updateGoalIdOnJournal = (goalId) => {
+    journalData.getJournalByGoalId(goalId)
+      .then((goalJournal) => {
+        goalJournal.forEach((entry) => {
+          const updatedEntry = entry;
+          updatedEntry.goalId = 'goal0';
+          journalData.changeJournal(entry.id, updatedEntry);
+        });
+      }).catch((err) => console.error('error from updateGoalIdOnPosts', err));
+  }
+
   confirmDeleteGoal = (goalId) => {
     this.setState({ goalEntryToDelete: goalId });
     this.props.toggleModal();
@@ -67,6 +79,7 @@ class Goals extends React.Component {
     goalData.removeGoal(goalEntryToDelete)
       .then(() => {
         this.updateGoalIdOnPosts(goalEntryToDelete);
+        this.updateGoalIdOnJournal(goalEntryToDelete);
         this.setGoals();
         this.props.toggleModal();
       }).catch((err) => console.error('error from deleteGoal', err));
