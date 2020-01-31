@@ -25,6 +25,7 @@ const getJournalByGoalId = (goalId) => new Promise((resolve, reject) => {
       const goalJournalArr = [];
       if (goalJournal !== null) {
         Object.keys(goalJournal).forEach((fbId) => {
+          goalJournal[fbId].id = fbId;
           goalJournalArr.push(goalJournal[fbId]);
         });
       }

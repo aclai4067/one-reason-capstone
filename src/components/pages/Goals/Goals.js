@@ -50,8 +50,14 @@ class Goals extends React.Component {
     feedData.getPostsByGoalId(goalId)
       .then((goalPosts) => {
         goalPosts.forEach((post) => {
-          const updatedPost = post;
-          updatedPost.goalId = 'goal0';
+          const updatedPost = {
+            post: post.post,
+            date: post.date,
+            likes: post.likes,
+            isAnonymous: post.isAnonymous,
+            goalId: 'goal0',
+            uid: post.uid,
+          };
           feedData.changePost(post.id, updatedPost);
         });
       }).catch((err) => console.error('error from updateGoalIdOnPosts', err));
@@ -61,8 +67,13 @@ class Goals extends React.Component {
     journalData.getJournalByGoalId(goalId)
       .then((goalJournal) => {
         goalJournal.forEach((entry) => {
-          const updatedEntry = entry;
-          updatedEntry.goalId = 'goal0';
+          const updatedEntry = {
+            date: entry.date,
+            title: entry.title,
+            body: entry.body,
+            goalId: 'goal0',
+            uid: entry.uid,
+          };
           journalData.changeJournal(entry.id, updatedEntry);
         });
       }).catch((err) => console.error('error from updateGoalIdOnPosts', err));
