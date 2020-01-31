@@ -12,4 +12,8 @@
     font-family: 'Bad Script', 'Kalam', sans-serif;
     font-size: 1.5em;
   }
+
+  .logout {
+    @include outlineButton(1rem, 6rem);
+  }
 }

@@ -94,7 +94,7 @@ class Goals extends React.Component {
       <div className='Goals'>
         <h1>Goals</h1>
         <div className='d-flex justify-content-start'>
-          <Link className='newGoalBtn btn btn-outline-secondary' to='goals/new'>New Goal</Link>
+          <Link className='newGoalBtn btn' to='goals/new'>New Goal</Link>
         </div>
         { (goals[0]) ? buildGoals : <h4 className='noGoals pt-4'>You haven't set any goals.</h4> }
         <div>

@@ -1,0 +1,23 @@
+@import '../../../styles/variables';
+
+.JournalForm {
+
+  h1 {
+    color: $teal;
+    padding: 1em;
+  }
+
+  input, select, textarea {
+    @include formInput;
+  }
+
+  .journalBody {
+    resize: both;
+    overflow: auto;
+    min-height: 40vh;
+  }
+
+  .saveJournalBtn, .updateJournalBtn {
+    @include formButton(5em);
+  }
+}

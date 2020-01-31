@@ -17,6 +17,7 @@ import Goals from '../components/pages/Goals/Goals';
 import GoalForm from '../components/pages/GoalForm/GoalForm';
 import Profile from '../components/pages/Profile/Profile';
 import Journal from '../components/pages/Journal/Journal';
+import JournalForm from '../components/pages/JournalForm/JournalForm';
 
 authData.firebaseApp();
 
@@ -70,6 +71,8 @@ class App extends React.Component {
             <PrivateRoute path='/profile' exact component={Profile} authed={authed} />
             <PrivateRoute path='/profile/:profileId/edit' exact component={Profile} authed={authed} />
             <PrivateRoute path='/journal' exact component={Journal} authed={authed} />
+            <PrivateRoute path='/journal/new' exact component={JournalForm} authed={authed} />
+            <PrivateRoute path='/journal/:journalId/edit' exact component={JournalForm} authed={authed} />
           </Switch>
         </Router>
       </div>

@@ -20,4 +20,6 @@ const getJournalByUid = (uid) => new Promise((resolve, reject) => {
 
 const removeJournalEntry = (journalId) => axios.delete(`${baseUrl}/journals/${journalId}.json`);
 
-export default { getJournalByUid, removeJournalEntry };
+const createJournal = (journalObj) => axios.post(`${baseUrl}/journals.json`, journalObj);
+
+export default { getJournalByUid, removeJournalEntry, createJournal };

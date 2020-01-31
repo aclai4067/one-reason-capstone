@@ -5,7 +5,12 @@
 
   h1 {
     color: $teal;
-    margin: 1em;
+    margin-top: 1em;
+  }
+
+  .journalNew {
+    margin: 0 0 1em 1em;
+    @include outlineButton(1rem, 8rem);
   }
 }
 
@@ -24,10 +29,10 @@
   }
 
   .deleteJournalBtn {
-    @include formButton(4em);
+    @include formButton(5em);
   }
 
   .dismissDeleteJournal {
-    @include altButton(4m);
+    @include altButton(5em);
   }
 }
