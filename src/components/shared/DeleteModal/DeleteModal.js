@@ -22,7 +22,7 @@ class DeleteModal extends React.Component {
       <div className='DeleteModal'>
         <Modal isOpen={modalIsOpen} toggle={toggleModal} className='deleteVerifyModal'>
           <ModalBody>
-            <p className='verifyDelete'>Are you sure you want to delete your journal entry?</p>
+            <p className='verifyDelete'>Are you sure you want to delete your entry?</p>
             <p>This cannot be recovered.</p>
           </ModalBody>
           <ModalFooter className='d-flex justify-content-between'>
