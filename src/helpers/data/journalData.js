@@ -18,6 +18,21 @@ const getJournalByUid = (uid) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
+const getJournalByGoalId = (goalId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/journals.json?orderBy="goalId"&equalTo="${goalId}"`)
+    .then((response) => {
+      const goalJournal = response.data;
+      const goalJournalArr = [];
+      if (goalJournal !== null) {
+        Object.keys(goalJournal).forEach((fbId) => {
+          goalJournal[fbId].id = fbId;
+          goalJournalArr.push(goalJournal[fbId]);
+        });
+      }
+      resolve(goalJournalArr);
+    }).catch((err) => reject(err));
+});
+
 const getJournalById = (journalId) => axios.get(`${baseUrl}/journals/${journalId}.json`);
 
 const removeJournalEntry = (journalId) => axios.delete(`${baseUrl}/journals/${journalId}.json`);
@@ -28,6 +43,7 @@ const changeJournal = (journalId, journalObj) => axios.put(`${baseUrl}/journals/
 
 export default {
   getJournalByUid,
+  getJournalByGoalId,
   getJournalById,
   removeJournalEntry,
   createJournal,
