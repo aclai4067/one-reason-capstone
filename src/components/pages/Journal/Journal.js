@@ -2,22 +2,22 @@ import './Journal.scss';
 import React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalFooter,
-} from 'reactstrap';
+import PropTypes from 'prop-types';
 import journalData from '../../../helpers/data/journalData';
 import authData from '../../../helpers/data/authData';
 import JournalEntry from '../../shared/JournalEntry/JournalEntry';
+import DeleteModal from '../../shared/DeleteModal/DeleteModal';
 
 class Journal extends React.Component {
   state = {
     allJournalEntries: [],
     selectedJournalEntries: [],
-    modalIsOpen: false,
     journalEntryToDelete: '',
+  }
+
+  static propTypes = {
+    modalIsOpen: PropTypes.bool,
+    toggleModal: PropTypes.func,
   }
 
   setJournal = () => {
@@ -33,13 +33,9 @@ class Journal extends React.Component {
     this.setJournal();
   }
 
-  toggleModal = () => {
-    this.setState({ modalIsOpen: !this.state.modalIsOpen });
-  }
-
   confirmDelete = (journalId) => {
     this.setState({ journalEntryToDelete: journalId });
-    this.toggleModal();
+    this.props.toggleModal();
   }
 
   deleteEntryEvent = (e) => {
@@ -48,12 +44,13 @@ class Journal extends React.Component {
     journalData.removeJournalEntry(journalEntryToDelete)
       .then(() => {
         this.setJournal();
-        this.toggleModal();
+        this.props.toggleModal();
       }).catch((err) => console.error('error from deleteEntry', err));
   }
 
   render() {
-    const { selectedJournalEntries, modalIsOpen } = this.state;
+    const { selectedJournalEntries } = this.state;
+    const { modalIsOpen, toggleModal } = this.props;
     const buildJournal = selectedJournalEntries.map((entry) => <JournalEntry key={entry.id} entry={entry} confirmDelete={this.confirmDelete} />);
     return (
       <div className='Journal'>
@@ -62,18 +59,7 @@ class Journal extends React.Component {
           <Link to='/journal/new' className='btn journalNew'>New Entry</Link>
         </div>
         { (selectedJournalEntries[0]) ? buildJournal : <h4 className='noEntries mt-3'>You haven't written in your journal yet</h4>}
-        <div>
-          <Modal isOpen={modalIsOpen} toggle={this.toggleModal} className='deleteJournalModal'>
-            <ModalBody>
-              <p className='verifyDelete'>Are you sure you want to delete your journal entry?</p>
-              <p>This cannot be recovered.</p>
-            </ModalBody>
-            <ModalFooter className='d-flex justify-content-between'>
-              <Button className='deleteJournalBtn' onClick={this.deleteEntryEvent}>Delete</Button>{' '}
-              <Button className='dismissDeleteJournal' onClick={this.toggleModal}>Keep</Button>
-            </ModalFooter>
-          </Modal>
-        </div>
+        <DeleteModal modalIsOpen={modalIsOpen} toggleModal={toggleModal} deleteFunc={this.deleteEntryEvent} />
       </div>
     );
   }

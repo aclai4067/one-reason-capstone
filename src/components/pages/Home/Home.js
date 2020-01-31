@@ -11,6 +11,7 @@ import goalData from '../../../helpers/data/goalData';
 import feedData from '../../../helpers/data/feedData';
 import Post from '../../shared/Post/Post';
 import ReasonForm from '../../shared/ReasonForm/ReasonForm';
+import DeleteModal from '../../shared/DeleteModal/DeleteModal';
 
 class Home extends React.Component {
   state = {
@@ -19,10 +20,13 @@ class Home extends React.Component {
     userFeed: [],
     selectedUserFeed: [],
     goals: [],
+    postToDelete: '',
   }
 
   static propTypes = {
     setUser: PropTypes.func,
+    modalIsOpen: PropTypes.bool,
+    toggleModal: PropTypes.func,
   }
 
   getGoalCount = (uid) => {
@@ -61,11 +65,19 @@ class Home extends React.Component {
       }).catch((err) => console.error('error from savePostEvent', err));
   }
 
-  deletePost = (feedId) => {
+  confirmDeletePost = (feedId) => {
+    this.setState({ postToDelete: feedId });
+    this.props.toggleModal();
+  }
+
+  deletePostEvent = (e) => {
+    e.preventDefault();
+    const { postToDelete } = this.state;
     const uid = authData.getUid();
-    feedData.removePost(feedId)
+    feedData.removePost(postToDelete)
       .then(() => {
         this.setUserFeed(uid);
+        this.props.toggleModal();
       }).catch((err) => console.error('error from deletePost', err));
   }
 
@@ -92,12 +104,13 @@ class Home extends React.Component {
 
   render() {
     const { goals, userFeed } = this.state;
+    const { modalIsOpen, toggleModal } = this.props;
     const { feedId } = this.props.match.params;
     const { path } = this.props.computedMatch;
     const buildGoalFilter = goals.map((goal) => <option key={goal.id} value={goal.id}>{goal.name}</option>);
     const buildHome = () => {
       const { user, goalsMet, selectedUserFeed } = this.state;
-      const buildFeed = selectedUserFeed.map((post) => <Post key={post.id} post={post} homeView={true} deletePost={this.deletePost} path={path} />);
+      const buildFeed = selectedUserFeed.map((post) => <Post key={post.id} post={post} homeView={true} confirmDeletePost={this.confirmDeletePost} path={path} />);
       if (!user.id) {
         return (
           <div className='newUserHome'>
@@ -132,6 +145,7 @@ class Home extends React.Component {
             </select>
             { (selectedUserFeed[0]) ? buildFeed : <h4 className='noPosts mt-3'>You haven't made any posts yet</h4> }
           </div>
+          <DeleteModal modalIsOpen={modalIsOpen} toggleModal={toggleModal} deleteFunc={this.deletePostEvent} />
         </div>
       );
     };

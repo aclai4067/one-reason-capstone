@@ -15,7 +15,7 @@ class SingleGoal extends React.Component {
 
   static propTypes = {
     goal: goalShape.goalShape,
-    deleteGoal: PropTypes.func,
+    confirmDeleteGoal: PropTypes.func,
     metGoal: PropTypes.func,
   }
 
@@ -28,10 +28,10 @@ class SingleGoal extends React.Component {
       }).catch((err) => console.error('error from singleGoal componentDidMount', err));
   }
 
-  deleteGoalEvent = (e) => {
+  confirmDeleteGoalEvent = (e) => {
     e.preventDefault();
-    const { goal, deleteGoal } = this.props;
-    deleteGoal(goal.id);
+    const { goal, confirmDeleteGoal } = this.props;
+    confirmDeleteGoal(goal.id);
   }
 
   metGoalEvent = () => {
@@ -55,7 +55,7 @@ class SingleGoal extends React.Component {
           <h4 className='goalHeader'>{goal.name}</h4>
           <div className='d-flex justify-content-end'>
             <Link className='editGoalBtn btn close p-0' to={`/goals/${goal.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
-            <button className='deleteGoalBtn btn close' onClick={this.deleteGoalEvent}><FontAwesomeIcon icon={faTrashAlt} /></button>
+            <button className='deleteGoalBtn btn close' onClick={this.confirmDeleteGoalEvent}><FontAwesomeIcon icon={faTrashAlt} /></button>
           </div>
         </header>
         <p>Target Date: {moment(goal.targetDate).format('ll')}</p>
