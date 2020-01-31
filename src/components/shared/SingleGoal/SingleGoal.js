@@ -36,8 +36,12 @@ class SingleGoal extends React.Component {
 
   metGoalEvent = () => {
     const { goal, metGoal } = this.props;
-    const goalUpdate = goal;
-    goalUpdate.isMet = true;
+    const goalUpdate = {
+      name: goal.name,
+      targetDate: goal.targetDate,
+      isMet: true,
+      uid: goal.uid,
+    };
     metGoal(goal.id, goalUpdate);
   }
 
@@ -59,7 +63,12 @@ class SingleGoal extends React.Component {
           <p>You have posted {postCount} reasons to meet this goal.</p>
           {
             (goal.isMet) ? (<p className='goalMet'>Met!</p>)
-              : (<form><input id={`check${goal.id}`} className='goalCheckBox' type='checkbox' onClick={this.metGoalEvent} /><label className='goalUnchecked pl-2' htmlFor={`check${goal.id}`}>Goal Met</label></form>)
+              : (
+                <form>
+                  <input id={`check${goal.id}`} className='goalCheckBox' type='checkbox' onClick={this.metGoalEvent} />
+                  <label className='goalUnchecked pl-2' htmlFor={`check${goal.id}`}>Goal Met</label>
+                </form>
+              )
           }
         </div>
       </div>
