@@ -1,0 +1,24 @@
+@import '../../../styles/variables';
+
+.deleteVerifyModal {
+  background-color: $backgroundCream;
+  color: $sedona;
+
+  p {
+    text-align: center;
+    font-size: 1.25em;
+    margin-bottom: .25em;
+
+    &.verifyDelete {
+      color: $darkGreige;
+    }
+  }
+
+  .deleteBtn {
+    @include formButton(5em);
+  }
+
+  .dismissDelete {
+    @include altButton(5em);
+  }
+}

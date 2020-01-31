@@ -13,26 +13,3 @@
     @include outlineButton(1rem, 8rem);
   }
 }
-
-.deleteJournalModal {
-  background-color: $backgroundCream;
-  color: $sedona;
-
-  p {
-    text-align: center;
-    font-size: 1.25em;
-    margin-bottom: .25em;
-
-    &.verifyDelete {
-      color: $darkGreige;
-    }
-  }
-
-  .deleteJournalBtn {
-    @include formButton(5em);
-  }
-
-  .dismissDeleteJournal {
-    @include altButton(5em);
-  }
-}

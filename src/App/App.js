@@ -34,6 +34,7 @@ class App extends React.Component {
   state = {
     authed: false,
     userFound: false,
+    modalIsOpen: false,
   }
 
   componentDidMount() {
@@ -50,27 +51,31 @@ class App extends React.Component {
     this.removeListener();
   }
 
+  toggleModal = () => {
+    this.setState({ modalIsOpen: !this.state.modalIsOpen });
+  }
+
   setUser = (status) => {
     this.setState({ userFound: status });
   }
 
   render() {
-    const { authed, userFound } = this.state;
+    const { authed, userFound, modalIsOpen } = this.state;
     return (
       <div className="App">
         <Router>
           <MyNav authed={authed} userFound={userFound} />
           <Switch>
             <PublicRoute path='/auth' exact component={Auth} authed={authed} />
-            <PrivateRoute path='/' exact component={Home} authed={authed} setUser={this.setUser} />
+            <PrivateRoute path='/' exact component={Home} authed={authed} setUser={this.setUser} toggleModal={this.toggleModal} modalIsOpen={modalIsOpen} />
             <PrivateRoute path='/feed' exact component={Feed} authed={authed} />
-            <PrivateRoute path='/goals' exact component={Goals} authed={authed} />
+            <PrivateRoute path='/goals' exact component={Goals} authed={authed} toggleModal={this.toggleModal} modalIsOpen={modalIsOpen} />
             <PrivateRoute path='/goals/new' exact component={GoalForm} authed={authed} />
             <PrivateRoute path='/goals/:goalId/edit' exact component={GoalForm} authed={authed} />
-            <PrivateRoute path='/home/:feedId/edit' exact component={Home} authed={authed} />
+            <PrivateRoute path='/home/:feedId/edit' exact component={Home} authed={authed} toggleModal={this.toggleModal} modalIsOpen={modalIsOpen} />
             <PrivateRoute path='/profile' exact component={Profile} authed={authed} />
             <PrivateRoute path='/profile/:profileId/edit' exact component={Profile} authed={authed} />
-            <PrivateRoute path='/journal' exact component={Journal} authed={authed} />
+            <PrivateRoute path='/journal' exact component={Journal} authed={authed} toggleModal={this.toggleModal} modalIsOpen={modalIsOpen} />
             <PrivateRoute path='/journal/new' exact component={JournalForm} authed={authed} />
             <PrivateRoute path='/journal/:journalId/edit' exact component={JournalForm} authed={authed} />
           </Switch>
