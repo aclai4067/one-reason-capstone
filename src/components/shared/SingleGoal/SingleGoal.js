@@ -59,7 +59,7 @@ class SingleGoal extends React.Component {
           <p>You have posted {postCount} reasons to meet this goal.</p>
           {
             (goal.isMet) ? (<p className='goalMet'>Met!</p>)
-              : (<form><input id='goalCheck' className='goalCheckBox' type='checkbox' onClick={this.metGoalEvent} /><label className='goalUnchecked pl-2' htmlFor='goalCheck'>Goal Met</label></form>)
+              : (<form><input id={`check${goal.id}`} className='goalCheckBox' type='checkbox' onClick={this.metGoalEvent} /><label className='goalUnchecked pl-2' htmlFor={`check${goal.id}`}>Goal Met</label></form>)
           }
         </div>
       </div>
