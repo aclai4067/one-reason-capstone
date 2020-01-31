@@ -69,22 +69,20 @@ class GoalForm extends React.Component {
   render() {
     const { goalName, goalTargetDate, goalIsMet } = this.state;
     const { goalId } = this.props.match.params;
-    const buildEditGoalMet = () => {
-      return (
+    const buildEditGoalMet = () => (
+      <div>
         <div>
-          <div>
-            <input id='goalCheck' className='goalCheckBox' type='checkbox' onChange={this.changeGoalIsMet} checked={goalIsMet} />
-            <label className='goalUnchecked pl-2' htmlFor='goalCheck'>Goal Met</label>
-          </div>
-          <button className='btn updateGoal' onClick={this.editGoalEvent}>Update</button>
+          <input id='goalCheck' className='goalCheckBox' type='checkbox' onChange={this.changeGoalIsMet} checked={goalIsMet} />
+          <label className='goalUnchecked pl-2' htmlFor='goalCheck'>Goal Met</label>
         </div>
-      );
-    }
+        <button className='btn updateGoal' onClick={this.editGoalEvent}>Update</button>
+      </div>
+    );
 
     return (
       <div className='GoalForm'>
         <h1>Set Your Goals</h1>
-        <form className='col-6 offset-3'>
+        <form className='col-sm-6 offset-sm-3'>
           <div className='form-group'>
             <label htmlFor='goalInput'>Goal</label>
             <input type='text' className='form-control' id='goalInput' value={goalName} onChange={this.changeGoalName} placeholder='Enter the goal you would like to meet' />

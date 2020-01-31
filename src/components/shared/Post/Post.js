@@ -4,7 +4,12 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt, faGlassCheers, faHeart } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPencilAlt,
+  faGlassCheers,
+  faHeart,
+  faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import postShape from '../../../helpers/propz/postShape';
 import userData from '../../../helpers/data/userData';
 import goalData from '../../../helpers/data/goalData';
@@ -108,14 +113,14 @@ class Post extends React.Component {
                 (homeView) ? (
                   <div className='d-flex'>
                     <Link className='editPostBtn btn close p-0' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
-                    <button className='deletePostBtn btn close' onClick={this.deletePostEvent}>X</button>
+                    <button className='deletePostBtn btn close' onClick={this.deletePostEvent}><FontAwesomeIcon icon={faTrashAlt} /></button>
                   </div>
-                ) : (<FontAwesomeIcon onClick={this.likePostEvent} className={`liked-${liked} likeBtn cheers`} icon={faGlassCheers} />)
+                ) : (<FontAwesomeIcon onClick={this.likePostEvent} className={`liked-${liked} likeBtn cheers ml-3`} icon={faGlassCheers} />)
               }
             </header>
             <p className='postContentGoalMet'>{post.post} {goalName}!</p>
             <footer className='d-flex justify-content-end'>
-              <p className='likesCount'>Celebrated by { (post.likes === 1) ? `${post.likes} person` : `${post.likes} people`}</p>
+              <p className='likesCount ml-2'>Celebrated by { (post.likes === 1) ? `${post.likes} person` : `${post.likes} people`}</p>
             </footer>
           </div>
         );
@@ -128,15 +133,15 @@ class Post extends React.Component {
               (homeView) ? (
                 <div className='d-flex'>
                   <Link className='editPostBtn btn close p-0' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
-                  <button className='deletePostBtn btn close' onClick={this.deletePostEvent}>X</button>
+                  <button className='deletePostBtn btn close' onClick={this.deletePostEvent}><FontAwesomeIcon icon={faTrashAlt} /></button>
                 </div>
-              ) : (<FontAwesomeIcon onClick={this.likePostEvent} className={`liked-${liked} likeBtn heart`} icon={faHeart} />)
+              ) : (<FontAwesomeIcon onClick={this.likePostEvent} className={`liked-${liked} likeBtn heart ml-3`} icon={faHeart} />)
             }
           </header>
           <p className='postContent'>{post.post}</p>
           <footer className='d-flex justify-content-between'>
             <p className='relatedGoal'>Related to Goal: {goalName}</p>
-            <p className='likesCount'>Loved by { (post.likes === 1) ? `${post.likes} person` : `${post.likes} people`}</p>
+            <p className='likesCount ml-2'>Loved by { (post.likes === 1) ? `${post.likes} person` : `${post.likes} people`}</p>
           </footer>
         </div>
       );

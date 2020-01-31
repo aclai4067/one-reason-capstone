@@ -98,19 +98,19 @@ class Goals extends React.Component {
         </div>
         { (goals[0]) ? buildGoals : <h4 className='noGoals pt-4'>You haven't set any goals.</h4> }
         <div>
-          <Modal isOpen={modalIsOpen} toggle={this.toggleModal} className='goalMetModal'>
+          <Modal isOpen={modalIsOpen} toggle={this.toggleModal} modalClassName='goalModal' className='goalMetModal'>
             <ModalHeader toggle={this.toggleModal}>You did it!</ModalHeader>
             <ModalBody>
               <h3>Congratulations!</h3>
               <p>Would you like to share the news?</p>
             </ModalBody>
             <ModalFooter className='d-flex justify-content-between'>
-              <Button color="warning" onClick={this.saveGoalMetShareEvent}>Share</Button>{' '}
+              <Button className='shareGoalMet' onClick={this.saveGoalMetShareEvent}>Share</Button>{' '}
               <div className='form-group d-flex'>
                 <input id='anonCheck' className='anonCheckbox' type='checkbox' onChange={this.changeGoalAnon} checked={goalShareIsAnonymous} />
                 <label className='anonCheckLabel pl-2' htmlFor='anonCheck'>Anonymous</label>
               </div>
-              <Button color="secondary" onClick={this.toggleModal}>No Thanks</Button>
+              <Button className='dismissGoalModal' onClick={this.toggleModal}>No Thanks</Button>
             </ModalFooter>
           </Modal>
         </div>

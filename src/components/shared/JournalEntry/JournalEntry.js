@@ -39,7 +39,7 @@ class JournalEntry extends React.Component {
 
     return (
       <div className='JournalEntry'>
-        <header className='d-flex justify-content-between'>
+        <header className='d-flex justify-content-between flex-wrap'>
           <h4 className='journalTitle'>{entry.title}</h4>
           <h5 className='journalDate'>{moment(entry.date).format('ll')}</h5>
         </header>

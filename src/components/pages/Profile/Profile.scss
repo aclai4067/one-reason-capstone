@@ -1,6 +1,10 @@
 @import '../../../styles/variables';
 
 .Profile{
+  input {
+    @include formInput;
+  }
+
   h1{
     color: $teal;
     padding: 1em;
