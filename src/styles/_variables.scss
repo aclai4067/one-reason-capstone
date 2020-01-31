@@ -1,4 +1,5 @@
 $backgroundCream: rgb(248, 239, 227);
+$transparentCream: rgba(248, 239, 227, 0.5);
 $teal: rgb(20, 120, 128);
 $translucentTeal: rgba(20, 121, 128, 0.404);
 $sageGrey: rgb(156, 168, 168);
@@ -38,6 +39,7 @@ $translucentSedona: rgba(158, 79, 50, 0.247);
 
 @mixin displayCard($alignment) {
   text-align: $alignment;
+  background-color: $transparentCream;
   color: $darkGreige;
   box-shadow: 0 3px 10px 0 $greige;
 }

@@ -3,7 +3,9 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
 body {
-  background-color: $backgroundCream;
+  background: radial-gradient(transparent, $transparentCream) no-repeat center center fixed,
+  $backgroundCream url("./oneReason.jpg") no-repeat center center fixed;
+  background-size: cover;
   margin: 0;
   font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
