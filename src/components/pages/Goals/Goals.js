@@ -8,17 +8,25 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
+import PropTypes from 'prop-types';
 import goalData from '../../../helpers/data/goalData';
 import authData from '../../../helpers/data/authData';
 import SingleGoal from '../../shared/SingleGoal/SingleGoal';
 import feedData from '../../../helpers/data/feedData';
+import DeleteModal from '../../shared/DeleteModal/DeleteModal';
 
 class Goals extends React.Component {
   state = {
     goals: [],
-    modalIsOpen: false,
+    goalModalIsOpen: false,
     goalShareIsAnonymous: false,
     goalIdToShare: '',
+    goalEntryToDelete: '',
+  }
+
+  static propTypes = {
+    modalIsOpen: PropTypes.bool,
+    toggleModal: PropTypes.func,
   }
 
   setGoals = () => {
@@ -33,8 +41,8 @@ class Goals extends React.Component {
     this.setGoals();
   }
 
-  toggleModal = () => {
-    this.setState({ modalIsOpen: !this.state.modalIsOpen });
+  toggleGoalModal = () => {
+    this.setState({ goalModalIsOpen: !this.state.goalModalIsOpen });
   }
 
   updateGoalIdOnPosts = (goalId) => {
@@ -48,11 +56,19 @@ class Goals extends React.Component {
       }).catch((err) => console.error('error from updateGoalIdOnPosts', err));
   }
 
-  deleteGoal = (goalId) => {
-    goalData.removeGoal(goalId)
+  confirmDeleteGoal = (goalId) => {
+    this.setState({ goalEntryToDelete: goalId });
+    this.props.toggleModal();
+  }
+
+  deleteGoalEvent = (e) => {
+    e.preventDefault();
+    const { goalEntryToDelete } = this.state;
+    goalData.removeGoal(goalEntryToDelete)
       .then(() => {
-        this.updateGoalIdOnPosts(goalId);
+        this.updateGoalIdOnPosts(goalEntryToDelete);
         this.setGoals();
+        this.props.toggleModal();
       }).catch((err) => console.error('error from deleteGoal', err));
   }
 
@@ -61,7 +77,7 @@ class Goals extends React.Component {
       .then(() => {
         this.setState({ goalIdToShare: goalId });
         this.setGoals();
-        this.toggleModal();
+        this.toggleGoalModal();
       }).catch((err) => console.error('error from metGoal', err));
   }
 
@@ -87,8 +103,9 @@ class Goals extends React.Component {
   }
 
   render() {
-    const { goals, modalIsOpen, goalShareIsAnonymous } = this.state;
-    const buildGoals = goals.map((goal) => <SingleGoal key={goal.id} goal={goal} deleteGoal={this.deleteGoal} metGoal={this.metGoal} />);
+    const { goals, goalModalIsOpen, goalShareIsAnonymous } = this.state;
+    const { modalIsOpen, toggleModal } = this.props;
+    const buildGoals = goals.map((goal) => <SingleGoal key={goal.id} goal={goal} confirmDeleteGoal={this.confirmDeleteGoal} metGoal={this.metGoal} />);
 
     return (
       <div className='Goals'>
@@ -98,8 +115,8 @@ class Goals extends React.Component {
         </div>
         { (goals[0]) ? buildGoals : <h4 className='noGoals pt-4'>You haven't set any goals.</h4> }
         <div>
-          <Modal isOpen={modalIsOpen} toggle={this.toggleModal} modalClassName='goalModal' className='goalMetModal'>
-            <ModalHeader toggle={this.toggleModal}>You did it!</ModalHeader>
+          <Modal isOpen={goalModalIsOpen} toggle={this.toggleGoalModal} modalClassName='goalModal' className='goalMetModal'>
+            <ModalHeader toggle={this.toggleGoalModal}>You did it!</ModalHeader>
             <ModalBody>
               <h3>Congratulations!</h3>
               <p>Would you like to share the news?</p>
@@ -110,10 +127,11 @@ class Goals extends React.Component {
                 <input id='anonCheck' className='anonCheckbox' type='checkbox' onChange={this.changeGoalAnon} checked={goalShareIsAnonymous} />
                 <label className='anonCheckLabel pl-2' htmlFor='anonCheck'>Anonymous</label>
               </div>
-              <Button className='dismissGoalModal' onClick={this.toggleModal}>No Thanks</Button>
+              <Button className='dismissGoalModal' onClick={this.toggleGoalModal}>No Thanks</Button>
             </ModalFooter>
           </Modal>
         </div>
+        <DeleteModal modalIsOpen={modalIsOpen} toggleModal={toggleModal} deleteFunc={this.deleteGoalEvent} />
       </div>
     );
   }

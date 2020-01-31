@@ -28,7 +28,7 @@ class Post extends React.Component {
   static propTypes = {
     post: postShape.postShape,
     homeView: PropTypes.bool,
-    deletePost: PropTypes.func,
+    confirmDeletePost: PropTypes.func,
     likePost: PropTypes.func,
     likesArr: PropTypes.arrayOf(likeShape.likeShape),
   }
@@ -61,10 +61,10 @@ class Post extends React.Component {
     }
   }
 
-  deletePostEvent = (e) => {
+  confirmDeletePostEvent = (e) => {
     e.preventDefault();
-    const { post, deletePost } = this.props;
-    deletePost(post.id);
+    const { post, confirmDeletePost } = this.props;
+    confirmDeletePost(post.id);
   }
 
   likePostEvent = (e) => {
@@ -113,7 +113,7 @@ class Post extends React.Component {
                 (homeView) ? (
                   <div className='d-flex'>
                     <Link className='editPostBtn btn close p-0' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
-                    <button className='deletePostBtn btn close' onClick={this.deletePostEvent}><FontAwesomeIcon icon={faTrashAlt} /></button>
+                    <button className='deletePostBtn btn close' onClick={this.confirmDeletePostEvent}><FontAwesomeIcon icon={faTrashAlt} /></button>
                   </div>
                 ) : (<FontAwesomeIcon onClick={this.likePostEvent} className={`liked-${liked} likeBtn cheers ml-3`} icon={faGlassCheers} />)
               }
@@ -133,7 +133,7 @@ class Post extends React.Component {
               (homeView) ? (
                 <div className='d-flex'>
                   <Link className='editPostBtn btn close p-0' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
-                  <button className='deletePostBtn btn close' onClick={this.deletePostEvent}><FontAwesomeIcon icon={faTrashAlt} /></button>
+                  <button className='deletePostBtn btn close' onClick={this.confirmDeletePostEvent}><FontAwesomeIcon icon={faTrashAlt} /></button>
                 </div>
               ) : (<FontAwesomeIcon onClick={this.likePostEvent} className={`liked-${liked} likeBtn heart ml-3`} icon={faHeart} />)
             }
