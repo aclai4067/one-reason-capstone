@@ -16,4 +16,13 @@
     top: 50px;
     right: 30px;
   }
+
+  @media screen and (max-width: 750px) {
+    .feedFilter {
+      position: relative;
+      top: 0;
+      right: 0;
+      margin-bottom: .75em;
+    }
+  }
 }

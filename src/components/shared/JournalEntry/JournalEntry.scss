@@ -5,7 +5,7 @@
   padding: .5em;
 
   header {
-    margin-top: .75em;
+    margin-top: .75rem;
 
     .journalTitle{
       color: $sedona;
@@ -21,9 +21,17 @@
     margin-right: 10px;
 
     svg {
-      height: .8em;
-      width: .8em;
+      height: .8rem;
+      width: .8rem;
     }
+  }
+
+  .editJournalBtn:hover {
+    color: $teal;
+  }
+
+  .deleteJournalBtn:hover {
+    color: $sedona;
   }
 
   .journalBody {

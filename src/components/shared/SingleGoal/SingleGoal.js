@@ -4,7 +4,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import goalShape from '../../../helpers/propz/goalShape';
 import feedData from '../../../helpers/data/feedData';
 
@@ -51,7 +51,7 @@ class SingleGoal extends React.Component {
           <h4 className='goalHeader'>{goal.name}</h4>
           <div className='d-flex justify-content-end'>
             <Link className='editGoalBtn btn close p-0' to={`/goals/${goal.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
-            <button className='deleteGoalBtn btn btn-danger close' onClick={this.deleteGoalEvent}>X</button>
+            <button className='deleteGoalBtn btn close' onClick={this.deleteGoalEvent}><FontAwesomeIcon icon={faTrashAlt} /></button>
           </div>
         </header>
         <p>Target Date: {moment(goal.targetDate).format('ll')}</p>

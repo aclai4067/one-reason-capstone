@@ -35,26 +35,20 @@
   } 
 
   .deletePostBtn{
-    height: 1em;
-    margin-left: 1em;
+    height: 1rem;
+    margin-left: 1rem;
 
     &:hover{
-      background-color: $sedona;
-      color: $lightGreige;
+      color: $sedona;
     }
   }
 
   .editPostBtn{
-    height: 1.2em;
-    margin-left: 1em;
+    height: 1rem;
+    margin-left: 1rem;
 
     &:hover{
-      background-color: $teal;
-      color: $lightGreige;
-    }
-
-    svg {
-      height: .8em;
+      color: $teal;
     }
   }
 

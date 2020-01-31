@@ -10,6 +10,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @media screen and (max-width: 750px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    h4{
+
+      font-size: 1.25rem;
+    }
+
+    p, label {
+      font-size: 1rem!important;
+    }
+  }
 }
 
 code {
