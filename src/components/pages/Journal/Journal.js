@@ -1,6 +1,7 @@
 import './Journal.scss';
 import React from 'react';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Modal,
@@ -57,6 +58,9 @@ class Journal extends React.Component {
     return (
       <div className='Journal'>
         <h1>Journal</h1>
+        <div className='d-flex justify-content-start'>
+          <Link to='/journal/new' className='btn journalNew'>New Entry</Link>
+        </div>
         { (selectedJournalEntries[0]) ? buildJournal : <h4 className='noEntries mt-3'>You haven't written in your journal yet</h4>}
         <div>
           <Modal isOpen={modalIsOpen} toggle={this.toggleModal} className='deleteJournalModal'>
