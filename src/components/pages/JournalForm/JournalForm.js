@@ -9,15 +9,29 @@ class JournalForm extends React.Component {
     journalTitle: '',
     journalBody: '',
     journalGoalId: 'goal0',
+    journalDate: '',
     userGoals: [],
   }
 
   componentDidMount() {
     const uid = authData.getUid();
+    const { journalId } = this.props.match.params;
     goalData.getGoalsByUid(uid)
       .then((results) => {
         this.setState({ userGoals: results });
-      }).catch((err) => console.error('error from JournalForm componentDidMount'));
+      }).catch((err) => console.error('error from JournalForm componentDidMount goals', err));
+    if (journalId) {
+      journalData.getJournalById(journalId)
+        .then((results) => {
+          const entry = results.data;
+          this.setState({
+            journalTitle: entry.title,
+            journalBody: entry.body,
+            journalGoalId: entry.goalId,
+            journalDate: entry.date,
+          });
+        }).catch((err2) => console.error('error from JournalForm componentDidMount journal', err2));
+    }
   }
 
   saveJournalEvent = (e) => {
@@ -34,6 +48,23 @@ class JournalForm extends React.Component {
       .then(() => {
         this.props.history.push('/journal');
       }).catch((err) => console.error('error from saveFournalEvent', err));
+  }
+
+  editJournalEvent = (e) => {
+    e.preventDefault();
+    const uid = authData.getUid();
+    const { journalId } = this.props.match.params;
+    const journalObj = {
+      date: this.state.journalDate,
+      title: this.state.journalTitle,
+      body: this.state.journalBody,
+      goalId: this.state.journalGoalId,
+      uid,
+    };
+    journalData.changeJournal(journalId, journalObj)
+      .then(() => {
+        this.props.history.push('/journal');
+      }).catch((err) => console.error('error from editJournalEvent', err));
   }
 
   changeTitle = (e) => {
@@ -58,7 +89,9 @@ class JournalForm extends React.Component {
       journalGoalId,
       userGoals,
     } = this.state;
+    const { journalId } = this.props.match.params;
     const buildGoalDropDown = userGoals.map((goal) => <option key={goal.id} value={goal.id}>{goal.name}</option>);
+
     return (
       <div className='JournalForm'>
         <h1>Journal Entry Form</h1>
@@ -76,9 +109,13 @@ class JournalForm extends React.Component {
           </div>
           <div className='form-group'>
             <label htmlFor='journalBody'>Body</label>
-            <textarea className='form-control journalBody' id='journalBody' value={journalBody} onChange={this.changeBody} placeholder='Journal your thoughts. This post will always be private.'></textarea>
+            <textarea className='form-control journalBody' id='journalBody' value={journalBody} onChange={this.changeBody} placeholder='Journal your thoughts. This post will always be private.'>
+            </textarea>
           </div>
-          <button className='btn saveJournalBtn' onClick={this.saveJournalEvent}>Save</button>
+          {
+            (journalId) ? <button className='btn updateJournalBtn' onClick={this.editJournalEvent}>Update</button>
+              : <button className='btn saveJournalBtn' onClick={this.saveJournalEvent}>Save</button>
+          }
         </form>
       </div>
     );
