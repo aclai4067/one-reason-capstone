@@ -86,7 +86,7 @@ class Profile extends React.Component {
     return (
       <div className='Profile'>
         <h1>Profile</h1>
-        <form className='col-6 offset-3 mt-4'>
+        <form className='col-sm-6 offset-sm-3 mt-4'>
           <div className='form-group'>
             <label htmlFor='nameInput'>Your Name</label>
             <input type='text' className='form-control' id='nameInput' value={this.state.profileName} onChange={this.changeName} placeholder='Enter the name you would like others to see' />

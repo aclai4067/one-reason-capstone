@@ -8,3 +8,26 @@
     margin: 1em;
   }
 }
+
+.deleteJournalModal {
+  background-color: $backgroundCream;
+  color: $sedona;
+
+  p {
+    text-align: center;
+    font-size: 1.25em;
+    margin-bottom: .25em;
+
+    &.verifyDelete {
+      color: $darkGreige;
+    }
+  }
+
+  .deleteJournalBtn {
+    @include formButton(4em);
+  }
+
+  .dismissDeleteJournal {
+    @include altButton(4m);
+  }
+}

@@ -59,14 +59,14 @@ class Journal extends React.Component {
         <h1>Journal</h1>
         { (selectedJournalEntries[0]) ? buildJournal : <h4 className='noEntries mt-3'>You haven't written in your journal yet</h4>}
         <div>
-          <Modal isOpen={modalIsOpen} toggle={this.toggleModal} className='goalMetModal'>
+          <Modal isOpen={modalIsOpen} toggle={this.toggleModal} className='deleteJournalModal'>
             <ModalBody>
-              <p>Are you sure you want to delete your journal entry?</p>
+              <p className='verifyDelete'>Are you sure you want to delete your journal entry?</p>
               <p>This cannot be recovered.</p>
             </ModalBody>
             <ModalFooter className='d-flex justify-content-between'>
-              <Button color="danger" onClick={this.deleteEntryEvent}>Delete</Button>{' '}
-              <Button color="secondary" onClick={this.toggleModal}>Keep</Button>
+              <Button className='deleteJournalBtn' onClick={this.deleteEntryEvent}>Delete</Button>{' '}
+              <Button className='dismissDeleteJournal' onClick={this.toggleModal}>Keep</Button>
             </ModalFooter>
           </Modal>
         </div>

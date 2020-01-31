@@ -84,7 +84,7 @@ class GoalForm extends React.Component {
     return (
       <div className='GoalForm'>
         <h1>Set Your Goals</h1>
-        <form className='col-6 offset-3'>
+        <form className='col-sm-6 offset-sm-3'>
           <div className='form-group'>
             <label htmlFor='goalInput'>Goal</label>
             <input type='text' className='form-control' id='goalInput' value={goalName} onChange={this.changeGoalName} placeholder='Enter the goal you would like to meet' />

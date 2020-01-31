@@ -110,7 +110,7 @@ class Post extends React.Component {
                     <Link className='editPostBtn btn close p-0' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
                     <button className='deletePostBtn btn close' onClick={this.deletePostEvent}>X</button>
                   </div>
-                ) : (<FontAwesomeIcon onClick={this.likePostEvent} className={`liked-${liked} likeBtn cheers`} icon={faGlassCheers} />)
+                ) : (<FontAwesomeIcon onClick={this.likePostEvent} className={`liked-${liked} likeBtn cheers ml-3`} icon={faGlassCheers} />)
               }
             </header>
             <p className='postContentGoalMet'>{post.post} {goalName}!</p>
@@ -130,7 +130,7 @@ class Post extends React.Component {
                   <Link className='editPostBtn btn close p-0' to={`/home/${post.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
                   <button className='deletePostBtn btn close' onClick={this.deletePostEvent}>X</button>
                 </div>
-              ) : (<FontAwesomeIcon onClick={this.likePostEvent} className={`liked-${liked} likeBtn heart`} icon={faHeart} />)
+              ) : (<FontAwesomeIcon onClick={this.likePostEvent} className={`liked-${liked} likeBtn heart ml-3`} icon={faHeart} />)
             }
           </header>
           <p className='postContent'>{post.post}</p>

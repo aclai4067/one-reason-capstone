@@ -47,7 +47,7 @@ class SingleGoal extends React.Component {
 
     return (
       <div className='SingleGoal p-3 mb-2'>
-        <header className='d-flex justify-content-between flex-wrap'>
+        <header className='d-flex justify-content-between'>
           <h4 className='goalHeader'>{goal.name}</h4>
           <div className='d-flex justify-content-end'>
             <Link className='editGoalBtn btn close p-0' to={`/goals/${goal.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link>
