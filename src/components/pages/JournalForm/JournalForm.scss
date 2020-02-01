@@ -17,6 +17,14 @@
     min-height: 40vh;
   }
 
+  .validationError {
+    color: red;
+  }
+
+  .valid-false {
+    border: 2px solid red;
+  }
+
   .saveJournalBtn, .updateJournalBtn {
     @include formButton(5em);
   }
