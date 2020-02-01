@@ -81,7 +81,6 @@ class GoalForm extends React.Component {
 
   changeGoalDate = (e) => {
     e.preventDefault();
-    console.log(e.target.value.length);
     if (e.target.value.length < 1) {
       this.setState({ goalTargetDate: e.target.value, dateValid: false });
     }
