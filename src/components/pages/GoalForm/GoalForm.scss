@@ -21,6 +21,14 @@
     width: 20px;
   }
 
+  .validationError {
+    color: red;
+  }
+
+  .valid-false {
+    border: 2px solid red;
+  }
+
   .saveGoal, .updateGoal {
     @include formButton(5em);
   }
