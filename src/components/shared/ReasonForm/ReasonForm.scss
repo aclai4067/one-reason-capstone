@@ -18,6 +18,14 @@
     }
   }
 
+  .valid-false {
+    border: 2px solid red;
+  }
+
+  .validationError {
+    color: red;
+  }
+
   .anonymousCheckbox {
     height: 20px;
     width: 20px;
