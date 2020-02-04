@@ -5,8 +5,10 @@
   @include displayCard(left);
 
   .goalUnchecked, .goalMet {
-    color: $teal;
-    font-size: 1.25em;
+    @include themify($themes) {
+      color: themed('logoColor');
+      font-size: 1.25em;
+    }
   }
 
   .goalCheckBox {
@@ -15,7 +17,9 @@
   }
 
   .goalHeader {
-    color: $sedona;
+    @include themify($themes) {
+      color: themed('accentColor');
+    }
   }
 
   p {
@@ -28,7 +32,9 @@
     margin-left: 1rem;
 
     &:hover{
-      color: $sedona;
+      @include themify($themes) {
+        color: themed('accentColor');
+      }
     }
   }
 
@@ -37,7 +43,9 @@
     margin-left: 1rem;
 
     &:hover{
-      color: $teal;
+      @include themify($themes) {
+        color: themed('logoColor');
+      }
     }
   }
 }

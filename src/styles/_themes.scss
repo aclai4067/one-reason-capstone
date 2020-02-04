@@ -14,6 +14,7 @@ $themes: (
     mediumText: $greige,
     navbar: $translucentSedona,
     inputBoxshadow: $translucentTeal,
+    formBackground: white,
   ),
   dark: (
     background: (radial-gradient(transparent, rgba(54, 53, 53, 0.541)) no-repeat center center fixed,
@@ -27,6 +28,7 @@ $themes: (
     mediumText: rgb(201, 198, 198),
     navbar: rgba(189, 149, 149, 0.603),
     inputBoxshadow: $translucentTeal,
+    formBackground: black,
   )
 );
 
@@ -60,8 +62,10 @@ $themes: (
 
 @mixin formInput {
   @include themify($themes) {
+    background-color: themed('formBackground');
     border: 1px solid themed('navbar');
     border-radius: 7px;
+    color: themed('darkText');
 
     &:focus {
       border-color: themed('logoColor');

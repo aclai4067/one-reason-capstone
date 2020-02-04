@@ -7,12 +7,16 @@
   margin: 0 .5em;
 
   h1 {
-    color: $teal;
-    text-align: left;
+    @include themify($themes) {
+      color: themed('logoColor');
+      text-align: left;
+    }
   }
 
   h2 {
-    color: $teal;
+    @include themify($themes) {
+      color: themed('logoColor');
+    }
 
     &.reasonPrompt {
       margin: .5em 0 .5em .5em;
@@ -45,37 +49,41 @@
     }
 
     .profilePic {
-      border: 1px solid $teal;
-      border-radius: 999px;
-      margin: .5em;
-      height: 100px;
-      width: 100px;
+      @include themify($themes) {
+        border: 1px solid themed('logoColor');
+        border-radius: 999px;
+        margin: .5em;
+        height: 100px;
+        width: 100px;
+      }
     }
 
     .profileImgAndEdit{
       position: relative;
 
       .editProfileBtn {
-        background-color: $lightGreige;
-        border: 1px solid $teal;
-        border-radius: 999px;
-        color: $teal; 
-        position: absolute;
-        top: 5em;
-        right: 5em;
-        height: 1.7em;
-        width: 1.7em;
-        margin-left: 1em;
-  
-        &:hover{
-          background-color: $teal;
-          border-color: $lightGreige;
-          color: $lightGreige;
-        }
-  
-        svg {
-          height: 1.5em;
-          vertical-align: 0;
+        @include themify($themes) {
+          background-color: themed('btnBackground');
+          border: 1px solid themed('logoColor');
+          border-radius: 999px;
+          color: themed('logoColor'); 
+          position: absolute;
+          top: 5em;
+          right: 5em;
+          height: 1.7em;
+          width: 1.7em;
+          margin-left: 1em;
+    
+          &:hover{
+            background-color: themed('logoColor');
+            border-color: themed('btnBackground');
+            color: themed('btnBackground');
+          }
+    
+          svg {
+            height: 1.5em;
+            vertical-align: 0;
+          }
         }
       }
     }
@@ -85,7 +93,6 @@
     position: relative;
 
     .logFilter {
-      color: $darkGreige;
       height: 2em;
       position: absolute;
       top: 10px;

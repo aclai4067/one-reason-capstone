@@ -9,8 +9,10 @@
   }
 
   label {
-    color: $darkGreige;
-    font-size: 1.25em;
+    @include themify($themes) {
+      color: themed('darkText');
+      font-size: 1.25em;
+    }
 
     &.goalDropdownLabel {
       min-width: 15vw;
@@ -20,11 +22,11 @@
   }
 
   .valid-false {
-    border: 2px solid red;
+    border: 2px solid red!important;
   }
 
   .validationError {
-    color: red;
+    color: red!important;
   }
 
   .anonymousCheckbox {

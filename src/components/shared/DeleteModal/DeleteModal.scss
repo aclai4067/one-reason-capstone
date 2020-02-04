@@ -2,8 +2,13 @@
 @import '../../../styles/themes';
 
 .deleteVerifyModal {
-  background-color: $backgroundCream;
-  color: $sedona;
+  @include themify($themes) {
+    color: themed('accentColor');
+
+    .modal-content{
+      background-color: themed('backgroundColor');
+    }
+  }
 
   p {
     text-align: center;
@@ -11,7 +16,9 @@
     margin-bottom: .25em;
 
     &.verifyDelete {
-      color: $darkGreige;
+      @include themify($themes) {
+        color: themed('darkText');
+      }
     }
   }
 

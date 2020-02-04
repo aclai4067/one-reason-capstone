@@ -4,8 +4,10 @@
 
 .MyNav{
   .navbar{
-    background-color: $translucentSedona!important;
-    box-shadow: 0 5px 15px 0 #553d3656;
+    @include themify($themes) {
+      background-color: themed('navbar')!important;
+      box-shadow: 0 5px 15px 0 #553d3656;
+    }
   }
 
   .navBrand {

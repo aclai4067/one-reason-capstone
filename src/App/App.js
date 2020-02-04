@@ -35,7 +35,7 @@ class App extends React.Component {
     authed: false,
     userFound: false,
     modalIsOpen: false,
-    theme: 'default',
+    theme: 'dark',
   }
 
   componentDidMount() {

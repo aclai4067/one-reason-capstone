@@ -4,8 +4,10 @@
 .JournalForm {
 
   h1 {
-    color: $teal;
-    padding: 1em;
+    @include themify($themes) {
+      color: themed('logoColor');
+      padding: 1em;
+    }
   }
 
   input, select, textarea {
@@ -19,11 +21,11 @@
   }
 
   .validationError {
-    color: red;
+    color: red!important;
   }
 
   .valid-false {
-    border: 2px solid red;
+    border: 2px solid red!important;
   }
 
   .saveJournalBtn, .updateJournalBtn {

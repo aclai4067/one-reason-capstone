@@ -7,11 +7,15 @@
   }
 
   h1 {
-    color: $teal;
+    @include themify($themes) {
+      color: themed('logoColor');
+    }
   }
 
   p {
-    color: $darkGreige;
+    @include themify($themes) {
+      color: themed('darkText');
+    }
     font-size: 1.25em;
   }
 
