@@ -9,63 +9,63 @@ $darkGreige: rgb(90, 84, 83);
 $sedona: rgb(158, 79, 50);
 $translucentSedona: rgba(158, 79, 50, 0.247);
 
-@mixin formButton($width) {
-  background-color: $lightGreige;
-    border: 1px solid $sedona;
-    color: $sedona;
-    font-size: 1.25em;
-    width: $width;
+// @mixin formButton($width) {
+//   background-color: $lightGreige;
+//     border: 1px solid $sedona;
+//     color: $sedona;
+//     font-size: 1.25em;
+//     width: $width;
 
-    &:hover{
-      background-color: $sedona;
-      border: 1px solid $lightGreige;
-      color: $lightGreige;
-    }
-}
+//     &:hover{
+//       background-color: $sedona;
+//       border: 1px solid $lightGreige;
+//       color: $lightGreige;
+//     }
+// }
 
-@mixin altButton($width) {
-  background-color: $lightGreige;
-    border: 1px solid $teal;
-    color: $teal;
-    font-size: 1.25em;
-    width: $width;
+// @mixin altButton($width) {
+//   background-color: $lightGreige;
+//     border: 1px solid $teal;
+//     color: $teal;
+//     font-size: 1.25em;
+//     width: $width;
 
-    &:hover{
-      background-color: $teal;
-      border: 1px solid $lightGreige;
-      color: $lightGreige;
-    }
-}
+//     &:hover{
+//       background-color: $teal;
+//       border: 1px solid $lightGreige;
+//       color: $lightGreige;
+//     }
+// }
 
-@mixin outlineButton($fontSize, $width) {
-  background-color: transparent;
-    border: 1px solid $greige;
-    color: $darkGreige;
-    font-size: $fontSize;
-    width: $width;
+// @mixin outlineButton($fontSize, $width) {
+//   background-color: transparent;
+//     border: 1px solid $greige;
+//     color: $darkGreige;
+//     font-size: $fontSize;
+//     width: $width;
 
-    &:hover{
-      background-color: $lightGreige;
-      border: 1px solid $teal;
-      color: $teal;
-    }
-}
+//     &:hover{
+//       background-color: $lightGreige;
+//       border: 1px solid $teal;
+//       color: $teal;
+//     }
+// }
 
-@mixin displayCard($alignment) {
-  text-align: $alignment;
-  background-color: $transparentCream;
-  border-radius: 7px;
-  color: $darkGreige;
-  box-shadow: 0 3px 10px 0 $greige;
-}
+// @mixin displayCard($alignment) {
+//   text-align: $alignment;
+//   background-color: $transparentCream;
+//   border-radius: 7px;
+//   color: $darkGreige;
+//   box-shadow: 0 3px 10px 0 $greige;
+// }
 
-@mixin formInput {
-    border: 1px solid $translucentSedona;
-    border-radius: 7px;
+// @mixin formInput {
+//     border: 1px solid $translucentSedona;
+//     border-radius: 7px;
 
-    &:focus {
-      border-color: $teal;
-      box-shadow: 0 0 0 0.2rem $translucentTeal;
-      outline: none;
-    }
-}
+//     &:focus {
+//       border-color: $teal;
+//       box-shadow: 0 0 0 0.2rem $translucentTeal;
+//       outline: none;
+//     }
+// }

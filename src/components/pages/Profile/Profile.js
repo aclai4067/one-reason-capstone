@@ -30,7 +30,7 @@ class Profile extends React.Component {
   saveProfileEvent = (e) => {
     e.preventDefault();
     const avatar = (this.state.profileImage.length < 1) ? 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
-        : this.state.profileImage;
+      : this.state.profileImage;
     const { profileName, firstGoalName, firstGoalDate } = this.state;
     if (profileName.length > 0 && firstGoalName.length > 0 && firstGoalDate.length > 0) {
       const uid = authData.getUid();
@@ -80,7 +80,7 @@ class Profile extends React.Component {
   updateProfileEvent = (e) => {
     e.preventDefault();
     const avatar = (this.state.profileImage.length < 1) ? 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
-        : this.state.profileImage;
+      : this.state.profileImage;
     const { profileName } = this.state;
     if (profileName.length > 0) {
       const { profileId } = this.props.match.params;
@@ -164,8 +164,8 @@ class Profile extends React.Component {
           { (!profileId) ? (
             <div className='firstGoal'>
               <div className='form-group'>
-                <label htmlFor='goalInput'>First Goal</label>
-                <input type='text' className={`form-control valid-${goalValid}`} id='goalInput' value={firstGoalName} onChange={this.changeGoalName} placeholder='Enter the goal you would like to meet' />
+                <label htmlFor='glInpt'>First Goal</label>
+                <input type='text' className={`form-control valid-${goalValid}`} id='glInpt' value={firstGoalName} onChange={this.changeGoalName} placeholder='Enter the goal you would like to meet' />
               </div>
               <div className='form-group'>
                 <label htmlFor='targetDateInput'>Goal Target Date</label>

@@ -1,5 +1,14 @@
+@import '../styles/themes';
+@import '../styles/variables';
+
 .App {
+  @include themify($themes) {
+    background: themed('background');
+  }
+  background-size: cover!important;
   text-align: center;
+  padding-bottom: 15px;
+  min-height: 100vh;
 }
 
 .App-logo {
