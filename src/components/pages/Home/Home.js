@@ -27,6 +27,7 @@ class Home extends React.Component {
     setUser: PropTypes.func,
     modalIsOpen: PropTypes.bool,
     toggleModal: PropTypes.func,
+    theme: PropTypes.string,
   }
 
   getGoalCount = (uid) => {
@@ -104,7 +105,7 @@ class Home extends React.Component {
 
   render() {
     const { goals, userFeed } = this.state;
-    const { modalIsOpen, toggleModal } = this.props;
+    const { modalIsOpen, toggleModal, theme } = this.props;
     const { feedId } = this.props.match.params;
     const { path } = this.props.computedMatch;
     const buildGoalFilter = goals.map((goal) => <option key={goal.id} value={goal.id}>{goal.name}</option>);
@@ -145,7 +146,7 @@ class Home extends React.Component {
             </select>
             { (selectedUserFeed[0]) ? buildFeed : <h4 className='noPosts mt-3'>You haven't made any posts yet</h4> }
           </div>
-          <DeleteModal modalIsOpen={modalIsOpen} toggleModal={toggleModal} deleteFunc={this.deletePostEvent} />
+          <DeleteModal modalIsOpen={modalIsOpen} toggleModal={toggleModal} deleteFunc={this.deletePostEvent} theme={theme} />
         </div>
       );
     };

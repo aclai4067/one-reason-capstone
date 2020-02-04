@@ -43,9 +43,12 @@
   .profileDisplay {
     
     p {
-      font-size: 1em;
-      margin: .5em;
-      text-align: right;
+      @include themify($themes) {
+        color: themed('darkText');
+        font-size: 1em;
+        margin: .5em;
+        text-align: right;
+      }
     }
 
     .profilePic {

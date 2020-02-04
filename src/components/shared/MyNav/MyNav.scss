@@ -8,6 +8,20 @@
       background-color: themed('navbar')!important;
       box-shadow: 0 5px 15px 0 #553d3656;
     }
+
+    .navTog {
+      @include outlineButton(1rem, 3rem);
+    }
+
+    .nav-link {
+      @include themify($themes) {
+        color: themed('mediumText');
+        
+        &:active{
+          color: themed('darkText');
+        }
+      }
+    }
   }
 
   .navBrand {

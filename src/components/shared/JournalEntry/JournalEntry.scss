@@ -51,7 +51,7 @@
   .journalGoal {
     @include themify($themes) {
       text-align: left;
-      color: themed('btnBackground');
+      color: themed('mediumText');
     }
   }
 }

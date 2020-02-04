@@ -22,11 +22,11 @@ $themes: (
     backgroundColor: rgb(29, 28, 28),
     cardBackground: rgba(54, 53, 53, 0.541),
     logoColor: $teal,
-    accentColor: rgb(189, 149, 149),
+    accentColor: rgb(209, 116, 10),
     btnBackground: rgb(54, 53, 53),
     darkText: white,
-    mediumText: rgb(201, 198, 198),
-    navbar: rgba(189, 149, 149, 0.603),
+    mediumText: rgb(150, 147, 147),
+    navbar: rgba(54, 53, 53, 0.541),
     inputBoxshadow: $translucentTeal,
     formBackground: black,
   )
@@ -119,6 +119,12 @@ $themes: (
         background-color: themed('btnBackground');
         border: 1px solid themed('logoColor');
         color: themed('logoColor');
+      }
+
+      &:focus {
+        border-color: themed('logoColor');
+        box-shadow: 0 0 0 0.2rem themed(('inputBoxshadow'));
+        outline: none;
       }
   }
 }
