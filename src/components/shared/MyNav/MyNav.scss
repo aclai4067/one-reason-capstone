@@ -15,19 +15,21 @@
 
     .nav-link {
       @include themify($themes) {
-        color: themed('mediumText');
-        
+        color: themed('darkText');
+
         &:active{
-          color: themed('darkText');
+          color: themed('mediumText');
         }
       }
     }
   }
 
   .navBrand {
-    color: $teal;
-    font-family: 'Bad Script', 'Kalam', sans-serif;
-    font-size: 1.5em;
+    @include themify($themes) {
+      color: themed('logoColor');
+      font-family: 'Bad Script', 'Kalam', sans-serif;
+      font-size: 1.5em;
+    }
   }
 
   .logout {

@@ -192,6 +192,7 @@ class Profile extends React.Component {
             <select className='form-control' id='themeSelection' onChange={this.changeTheme} value={profileTheme}>
               <option value='default'>Default/Light Theme</option>
               <option value='dark'>Dark Theme</option>
+              <option value='neutral'>Neutral Theme</option>
             </select>
           </div>
           { (!profileId) ? (
