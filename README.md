@@ -30,7 +30,7 @@ A Mindfulness App for Goal Setting
 
 ## Screenshots
 New User Profile Form
-![Profile Form - New User](https://raw.githubusercontent.com/aclai4067/one-reason-capstone/master/screenshots/OneReason-New-User.png)
+![Profile Form - New User](https://raw.githubusercontent.com/aclai4067/one-reason-capstone/master/screenshots/OneReason-New-User-020420.png)
 
 Existing User Home
 ![Home Display - Existing User](https://raw.githubusercontent.com/aclai4067/one-reason-capstone/master/screenshots/OneReason-Home.png)
@@ -56,10 +56,13 @@ Journal
 Alternate Style Themes
 > Dark
 ![Dark Theme Display](https://raw.githubusercontent.com/aclai4067/one-reason-capstone/master/screenshots/OneReason-Dark-Theme.png)
+
 > Neutral
 ![Neutral Theme Display](https://raw.githubusercontent.com/aclai4067/one-reason-capstone/master/screenshots/OneReason-Neutral-Theme.png)
+
 > Sea
 ![Sea Theme Display](https://raw.githubusercontent.com/aclai4067/one-reason-capstone/master/screenshots/OneReason-Sea-Theme.png)
+
 > Femme
 ![Femme Theme Display](https://raw.githubusercontent.com/aclai4067/one-reason-capstone/master/screenshots/OneReason-Femme-Theme.png)
 
