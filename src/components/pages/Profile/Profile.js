@@ -9,7 +9,7 @@ class Profile extends React.Component {
   state = {
     profileName: '',
     profileImage: '',
-    profileTheme: '',
+    profileTheme: 'default',
     firstGoalName: '',
     firstGoalDate: '',
     profile: {},
