@@ -1,16 +1,35 @@
 @import '../../../styles/variables';
+@import '../../../styles/themes';
 @import url('https://fonts.googleapis.com/css?family=Bad+Script|Kalam&display=swap');
 
 .MyNav{
   .navbar{
-    background-color: $translucentSedona!important;
-    box-shadow: 0 5px 15px 0 #553d3656;
+    @include themify($themes) {
+      background-color: themed('navbar')!important;
+      box-shadow: 0 5px 15px 0 #553d3656;
+    }
+
+    .navTog {
+      @include outlineButton(1rem, 3rem);
+    }
+
+    .nav-link {
+      @include themify($themes) {
+        color: themed('darkText');
+
+        &:active{
+          color: themed('mediumText');
+        }
+      }
+    }
   }
 
   .navBrand {
-    color: $teal;
-    font-family: 'Bad Script', 'Kalam', sans-serif;
-    font-size: 1.5em;
+    @include themify($themes) {
+      color: themed('logoColor');
+      font-family: 'Bad Script', 'Kalam', sans-serif;
+      font-size: 1.5em;
+    }
   }
 
   .logout {

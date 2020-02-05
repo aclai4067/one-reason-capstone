@@ -1,16 +1,21 @@
 @import '../../../styles/variables';
+@import '../../../styles/themes';
 
 .Feed{
   margin: 0 .5em;
   position: relative;
 
   h1{
-    color: $teal;
-    padding: 1em;
+    @include themify($themes) {
+      color: themed('logoColor');
+      padding: 1em;
+    }
   }
 
   .feedFilter {
-    color: $darkGreige;
+    @include themify($themes) {
+      color: themed('darkText');
+    }
     height: 2em;
     position: absolute;
     top: 50px;

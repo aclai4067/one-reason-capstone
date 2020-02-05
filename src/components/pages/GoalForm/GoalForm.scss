@@ -1,4 +1,5 @@
 @import '../../../styles/variables';
+@import '../../../styles/themes';
 
 .GoalForm {
 
@@ -7,13 +8,17 @@
   }
 
   h1 {
-    color: $teal;
-    padding: 1em;
+    @include themify($themes) {
+      color: themed('logoColor');
+      padding: 1em;
+    }
   }
 
   label {
-    color: $sedona;
-    font-size: 1.25em;
+    @include themify($themes) {
+      color: themed('accentColor');
+      font-size: 1.25em;
+    }
   }
 
   .goalCheckBox {
@@ -22,11 +27,11 @@
   }
 
   .validationError {
-    color: red;
+    color: red!important;
   }
 
   .valid-false {
-    border: 2px solid red;
+    border: 2px solid red!important;
   }
 
   .saveGoal, .updateGoal {

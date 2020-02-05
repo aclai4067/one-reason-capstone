@@ -13,14 +13,20 @@ class DeleteModal extends React.Component {
     modalIsOpen: PropTypes.bool,
     toggleModal: PropTypes.func,
     deleteFunc: PropTypes.func,
+    theme: PropTypes.string,
   }
 
   render() {
-    const { deleteFunc, modalIsOpen, toggleModal } = this.props;
+    const {
+      deleteFunc,
+      modalIsOpen,
+      toggleModal,
+      theme,
+    } = this.props;
 
     return (
-      <div className='DeleteModal'>
-        <Modal isOpen={modalIsOpen} toggle={toggleModal} className='deleteVerifyModal'>
+      <div className={`DeleteModal theme-${theme}`}>
+        <Modal isOpen={modalIsOpen} toggle={toggleModal} className={`deleteVerifyModal theme-${theme}`}>
           <ModalBody>
             <p className='verifyDelete'>Are you sure you want to delete your entry?</p>
             <p>This cannot be recovered.</p>

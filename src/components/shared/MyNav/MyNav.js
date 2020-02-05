@@ -72,7 +72,7 @@ class MyNav extends React.Component {
       <div className='MyNav'>
         <Navbar className='navbar navbar-expand-lg navbar-light bg-light'>
           <NavbarBrand className='navBrand' href='/'>One Reason</NavbarBrand>
-          { (authed) && (<NavbarToggler onClick={this.toggleNav} />) }
+          { (authed) && (<NavbarToggler className='navTog' onClick={this.toggleNav} />) }
           <Collapse isOpen={isOpen} navbar>
               { buildNavLinks() }
           </Collapse>

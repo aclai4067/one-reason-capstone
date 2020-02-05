@@ -1,12 +1,15 @@
 @import '../../../styles/variables';
+@import '../../../styles/themes';
 
 .Goals{
   margin: 0 .5em;
 
   h1{
-    color: $teal;
-    padding-top: 1em;
-    margin: 0;
+    @include themify($themes) {
+      color: themed('logoColor');
+      padding-top: 1em;
+      margin: 0;
+    }
   }
 
   .newGoalBtn{
@@ -17,11 +20,18 @@
 
 .goalModal {
   .goalMetModal{
-    background-color: $backgroundCream;
-    color: $darkGreige;
+    @include themify($themes) {
+      color: themed('darkText');
+
+      .modal-content{
+        background-color: themed('backgroundColor');
+      }
+    }
 
     h3 {
-      color: $teal;
+      @include themify($themes) {
+        color: themed('logoColor');
+      }
     }
 
     .anonCheckbox {

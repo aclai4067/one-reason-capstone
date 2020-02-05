@@ -1,4 +1,5 @@
 @import '../../../styles/variables';
+@import '../../../styles/themes';
 
 .JournalEntry {
   @include displayCard(justify);
@@ -8,12 +9,16 @@
     margin-top: .75rem;
 
     .journalTitle{
-      color: $sedona;
+      @include themify($themes) {
+        color: themed('accentColor');
+      }
     }
 
     .journalDate {
-      color: $sedona;
-      text-align: right;
+      @include themify($themes) {
+        color: themed('accentColor');
+        text-align: right;
+      }
     }
   }
   
@@ -27,11 +32,15 @@
   }
 
   .editJournalBtn:hover {
-    color: $teal;
+    @include themify($themes) {
+      color: themed('logoColor');
+    }
   }
 
   .deleteJournalBtn:hover {
-    color: $sedona;
+    @include themify($themes) {
+      color: themed('accentColor');
+    }
   }
 
   .journalBody {
@@ -40,7 +49,9 @@
   }
 
   .journalGoal {
-    text-align: left;
-    color: $lightGreige;
+    @include themify($themes) {
+      text-align: left;
+      color: themed('mediumText');
+    }
   }
 }

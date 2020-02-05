@@ -1,11 +1,14 @@
 @import '../../../styles/variables';
+@import '../../../styles/themes';
 
 .Journal {
   margin: .5em;
 
   h1 {
-    color: $teal;
-    margin-top: 1em;
+    @include themify($themes) {
+      color: themed('logoColor');
+      margin-top: 1em;
+    }
   }
 
   .journalNew {
