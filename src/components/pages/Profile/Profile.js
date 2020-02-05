@@ -193,6 +193,7 @@ class Profile extends React.Component {
               <option value='default'>Default/Light Theme</option>
               <option value='dark'>Dark Theme</option>
               <option value='neutral'>Neutral Theme</option>
+              <option value='sea'>Sea Theme</option>
             </select>
           </div>
           { (!profileId) ? (
