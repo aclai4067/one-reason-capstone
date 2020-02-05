@@ -194,6 +194,7 @@ class Profile extends React.Component {
               <option value='dark'>Dark Theme</option>
               <option value='neutral'>Neutral Theme</option>
               <option value='sea'>Sea Theme</option>
+              <option value='femme'>Femme Theme</option>
             </select>
           </div>
           { (!profileId) ? (

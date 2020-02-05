@@ -57,6 +57,20 @@ $themes: (
     navbar: rgba(113, 141, 134, 0.384),
     inputBoxshadow: rgba(64, 64, 97, 0.502),
     formBackground: white,
+  ),
+  femme: (
+    background: (radial-gradient(transparent, $transparentCream) no-repeat center center fixed,
+    $backgroundCream url("https://images.unsplash.com/photo-1558346648-9757f2fa4474?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80") no-repeat center center fixed),
+    backgroundColor: $backgroundCream,
+    cardBackground: rgba(248, 227, 239, 0.5),
+    logoColor: rgb(28, 156, 150),
+    accentColor: rgb(151, 108, 115),
+    btnBackground: $lightGreige,
+    darkText: $darkGreige,
+    mediumText: $greige,
+    navbar: rgba(151, 108, 115, 0.521),
+    inputBoxshadow: rgba(28, 156, 150, .404),
+    formBackground: white,
   )
 );
 
