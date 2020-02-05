@@ -56,6 +56,10 @@ class App extends React.Component {
     this.setState({ modalIsOpen: !this.state.modalIsOpen });
   }
 
+  changeTheme = (newTheme) => {
+    this.setState({ theme: newTheme });
+  }
+
   setUser = (status) => {
     this.setState({ userFound: status });
   }
@@ -74,14 +78,14 @@ class App extends React.Component {
             <MyNav authed={authed} userFound={userFound} />
             <Switch>
               <PublicRoute path='/auth' exact component={Auth} authed={authed} />
-              <PrivateRoute path='/' exact component={Home} authed={authed} setUser={this.setUser} toggleModal={this.toggleModal} modalIsOpen={modalIsOpen} theme={theme} />
+              <PrivateRoute path='/' exact component={Home} authed={authed} setUser={this.setUser} toggleModal={this.toggleModal} modalIsOpen={modalIsOpen} changeTheme={this.changeTheme} />
               <PrivateRoute path='/feed' exact component={Feed} authed={authed} />
               <PrivateRoute path='/goals' exact component={Goals} authed={authed} toggleModal={this.toggleModal} modalIsOpen={modalIsOpen} theme={theme} />
               <PrivateRoute path='/goals/new' exact component={GoalForm} authed={authed} />
               <PrivateRoute path='/goals/:goalId/edit' exact component={GoalForm} authed={authed} />
               <PrivateRoute path='/home/:feedId/edit' exact component={Home} authed={authed} toggleModal={this.toggleModal} modalIsOpen={modalIsOpen} theme={theme} />
-              <PrivateRoute path='/profile' exact component={Profile} authed={authed} />
-              <PrivateRoute path='/profile/:profileId/edit' exact component={Profile} authed={authed} />
+              <PrivateRoute path='/profile' exact component={Profile} authed={authed} changeTheme={this.changeTheme} />
+              <PrivateRoute path='/profile/:profileId/edit' exact component={Profile} authed={authed} changeTheme={this.changeTheme} />
               <PrivateRoute path='/journal' exact component={Journal} authed={authed} toggleModal={this.toggleModal} modalIsOpen={modalIsOpen} theme={theme} />
               <PrivateRoute path='/journal/new' exact component={JournalForm} authed={authed} />
               <PrivateRoute path='/journal/:journalId/edit' exact component={JournalForm} authed={authed} />

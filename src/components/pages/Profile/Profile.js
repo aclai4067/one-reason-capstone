@@ -1,5 +1,6 @@
 import './Profile.scss';
 import React from 'react';
+import PropTypes from 'prop-types';
 import authData from '../../../helpers/data/authData';
 import userData from '../../../helpers/data/userData';
 import goalData from '../../../helpers/data/goalData';
@@ -8,6 +9,7 @@ class Profile extends React.Component {
   state = {
     profileName: '',
     profileImage: '',
+    profileTheme: '',
     firstGoalName: '',
     firstGoalDate: '',
     profile: {},
@@ -16,13 +18,22 @@ class Profile extends React.Component {
     dateValid: true,
   }
 
+  static propTypes = {
+    changeTheme: PropTypes.func,
+  }
+
   componentDidMount() {
     const { profileId } = this.props.match.params;
     if (profileId) {
       userData.getUserById(profileId)
         .then((results) => {
           const user = results.data;
-          this.setState({ profile: user, profileName: user.name, profileImage: user.imageUrl });
+          this.setState({
+            profile: user,
+            profileName: user.name,
+            profileImage: user.imageUrl,
+            profileTheme: user.theme,
+          });
         }).catch((err) => console.error('error in profile componentDidMount', err));
     }
   }
@@ -31,7 +42,12 @@ class Profile extends React.Component {
     e.preventDefault();
     const avatar = (this.state.profileImage.length < 1) ? 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
       : this.state.profileImage;
-    const { profileName, firstGoalName, firstGoalDate } = this.state;
+    const {
+      profileName,
+      profileTheme,
+      firstGoalName,
+      firstGoalDate,
+    } = this.state;
     if (profileName.length > 0 && firstGoalName.length > 0 && firstGoalDate.length > 0) {
       const uid = authData.getUid();
       const newGoalObj = {
@@ -44,6 +60,7 @@ class Profile extends React.Component {
         name: profileName,
         imageUrl: avatar,
         memberSince: new Date(),
+        theme: profileTheme,
         uid,
       };
       userData.createUser(newUserObj)
@@ -81,12 +98,13 @@ class Profile extends React.Component {
     e.preventDefault();
     const avatar = (this.state.profileImage.length < 1) ? 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
       : this.state.profileImage;
-    const { profileName } = this.state;
+    const { profileName, profileTheme } = this.state;
     if (profileName.length > 0) {
       const { profileId } = this.props.match.params;
       const updatedProfile = this.state.profile;
       updatedProfile.name = profileName;
       updatedProfile.imageUrl = avatar;
+      updatedProfile.theme = profileTheme;
       userData.editProfile(profileId, updatedProfile)
         .then(() => {
           this.props.history.push('/');
@@ -129,6 +147,13 @@ class Profile extends React.Component {
     }
   }
 
+  changeTheme = (e) => {
+    e.preventDefault();
+    const { changeTheme } = this.props;
+    this.setState({ profileTheme: e.target.value });
+    changeTheme(e.target.value);
+  }
+
   flagRequired = () => {
     const { nameValid, goalValid, dateValid } = this.state;
     if (!nameValid || !goalValid || !dateValid) {
@@ -141,6 +166,7 @@ class Profile extends React.Component {
     const { profileId } = this.props.match.params;
     const {
       profileName,
+      profileTheme,
       profileImage,
       firstGoalName,
       firstGoalDate,
@@ -160,6 +186,13 @@ class Profile extends React.Component {
           <div className='form-group'>
             <label htmlFor='imageInput'>Profile Picture</label>
             <input type='text' className='form-control' id='imageInput' value={profileImage} onChange={this.changeImg} placeholder='Enter an image url (ending in .jpg, .png, .gif, etc.)' />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='themeSelection' className='themeDropdownLabel'>Theme</label>
+            <select className='form-control' id='themeSelection' onChange={this.changeTheme} value={profileTheme}>
+              <option value='default'>Default/Light Theme</option>
+              <option value='dark'>Dark Theme</option>
+            </select>
           </div>
           { (!profileId) ? (
             <div className='firstGoal'>

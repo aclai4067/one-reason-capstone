@@ -2,7 +2,7 @@
 @import '../../../styles/themes';
 
 .Profile{
-  input {
+  input, select {
     @include formInput;
   }
 

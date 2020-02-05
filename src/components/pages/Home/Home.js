@@ -28,6 +28,7 @@ class Home extends React.Component {
     modalIsOpen: PropTypes.bool,
     toggleModal: PropTypes.func,
     theme: PropTypes.string,
+    changeTheme: PropTypes.func,
   }
 
   getGoalCount = (uid) => {
@@ -48,6 +49,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     const uid = authData.getUid();
+    const { changeTheme } = this.props;
     userData.getUserByUid(uid)
       .then((existingUser) => {
         if (existingUser) {
@@ -55,6 +57,7 @@ class Home extends React.Component {
           this.props.setUser(true);
           this.getGoalCount(uid);
           this.setUserFeed(uid);
+          changeTheme(existingUser.theme);
         }
       }).catch((err) => console.error('error getting user by uid from Home', err));
   }
