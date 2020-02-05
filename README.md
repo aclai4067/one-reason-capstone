@@ -53,6 +53,16 @@ Journal - New Entry Form
 Journal
 ![Journal Display](https://raw.githubusercontent.com/aclai4067/one-reason-capstone/master/screenshots/OneReason-Journal.png)
 
+Alternate Style Themes
+> Dark
+![Dark Theme Display](https://raw.githubusercontent.com/aclai4067/one-reason-capstone/master/screenshots/OneReason-Dark-Theme.png)
+> Neutral
+![Neutral Theme Display](https://raw.githubusercontent.com/aclai4067/one-reason-capstone/master/screenshots/OneReason-Neutral-Theme.png)
+> Sea
+![Sea Theme Display](https://raw.githubusercontent.com/aclai4067/one-reason-capstone/master/screenshots/OneReason-Sea-Theme.png)
+> Femme
+![Femme Theme Display](https://raw.githubusercontent.com/aclai4067/one-reason-capstone/master/screenshots/OneReason-Femme-Theme.png)
+
 ## Demo
 [Preview the Project Here](https://one-reason-c16e6.firebaseapp.com/)
 
